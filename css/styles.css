@@ -3,15 +3,16 @@ body{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position:center;
-	width: auto;
-	height: auto;
+	height: 100%;
 	margin: 0;
+	min-width: 1024px;
+	
 }
 
 .container{
 	height: 100%;
-	position:relative;
-	width:auto;
+	position: relative;
+	width: auto;
 }
 
 .header{
@@ -24,9 +25,6 @@ body{
 	margin-right: 10px;
 }
 
-.content {
-	
-}
 
 h1{
 	text-align:center;
@@ -37,7 +35,7 @@ h1{
 }
 
 .container {
-	margin-bottom: 400px;
+	margin-bottom: 480px;
 }
 
 
@@ -55,10 +53,30 @@ h1{
 }
 
 .footer{
-	position: relative;
-	background-color:#999;
 	clear:both;
-	text-align:center;
+	position: relative;
 	bottom: 0;
-	/*margin-top: 400px;*/
+	left: 0;
+	right: 0;
+	margin-bottom: 0;
+	/*height: 40px;*/
+
+	background-color:#999;
+	
+	
+	
+	min-width: 1024px;
+	text-align:center;
+	padding: 0.5px;
+	
+}
+
+
+a:link {
+	color: #333;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#FFF;
 }
