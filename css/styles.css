@@ -2,28 +2,63 @@ body{
 	background-image: url("../img/homepageBg.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
-
+	background-position:center;
+	width: auto;
+	height: auto;
+	margin: 0;
 }
 
 .container{
-	
+	height: 100%;
+	position:relative;
+	width:auto;
 }
 
-.header {
+.header{
+	background-color: #aa312c;
+	height:50px;
+	width: auto;
+}
 
+#asmlogo {
+	margin-right: 10px;
+}
+
+.content {
+	
 }
 
 h1{
 	text-align:center;
-	margin-top: 100px;
+	margin-top: 150px;
+	margin-bottom: 50px;
+	font-family: Futura;
+	font-size: 40px;
+}
 
+.container {
+	margin-bottom: 400px;
 }
 
 
-
 .compare {
-	padding: 20px;
-	color: #aa312c;
+	padding: 0px;
+	border: 1px #aa312c solid;
+	border-radius: 20px;
+	background-color: #aa312c;
+	width: 200px;
+	margin: auto;
 	text-align: center;
-	/*color: white;*/
+	color: white;
+	font-family:Futura;
+	font-size: 23px;
+}
+
+.footer{
+	position: relative;
+	background-color:#999;
+	clear:both;
+	text-align:center;
+	bottom: 0;
+	/*margin-top: 400px;*/
 }
