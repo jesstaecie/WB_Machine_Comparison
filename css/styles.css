@@ -18,27 +18,6 @@ body {
 	margin-right: 10px;
 }
 
-h1 {
-	text-align:center;
-	margin-top: 150px;
-	margin-bottom: 50px;
-	font-family: Futura;
-	font-size: 40px;
-}
-
-.compare {
-	padding: 0px;
-	border: 1px #aa312c solid;
-	border-radius: 20px;
-	background-color: #aa312c;
-	width: 200px;
-	margin: auto;
-	text-align: center;
-	color: white;
-	font-family:Futura;
-	font-size: 23px;
-}
-
 #footer {
 	font-family: Futura;
 	background-color:#999;
@@ -55,6 +34,7 @@ a:link {
 
 a:hover {
 	color:#FFF;
+	text-decoration:none;
 }
 
 
@@ -68,6 +48,26 @@ a:hover {
 	position: relative;
 	width: auto;
 	margin-bottom: 520px;
+}
+
+h1 {
+	text-align:center;
+	margin-top: 150px;
+	margin-bottom: 50px;
+	font-family: Futura;
+	font-size: 40px;
+}
+
+.compare {
+	padding: 0px;
+	border: 1px #aa312c solid;
+	border-radius: 20px;
+	background-color: #aa312c;
+	width: 200px;
+	margin: auto;
+	text-align: center;
+	font-family:Futura;
+	font-size: 23px;
 }
 
 /*select*/
