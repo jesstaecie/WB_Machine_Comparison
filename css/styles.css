@@ -85,5 +85,18 @@ a:hover {
 
 .selection-text div {
 	font-size: 20px;
-	text-align:center;
+}
+
+.select-machines-wrapper {
+	padding-top: 100px;
+	background-color: white;
+}
+
+.machine-item {
+
+}
+
+.machine-item div {
+	background-color: grey;
+	width: 250px;
 }
