@@ -3,8 +3,7 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	min-height: 100%;
-	margin: 0;
+	min-height: 100vh;
 	min-width: 1024px;	
 }
 
@@ -19,7 +18,7 @@ body {
 }
 
 #footer {
-	font-family: Futura;
+	font-family: Arial;
 	background-color:#999;
 	min-width: 1024px;
 	text-align:center;
@@ -42,39 +41,62 @@ a:hover {
 
 #index-body {
 	background-image: url("../img/homepageBg.jpg");
+	
 }
 
 .index-container {
 	position: relative;
 	width: auto;
-	margin-bottom: 520px;
+	margin-bottom: 740px;
 }
 
 h1 {
 	text-align:center;
-	margin-top: 150px;
+	margin-top: 20px;
 	margin-bottom: 50px;
-	font-family: Futura;
+	font-family: Arial;
 	font-size: 40px;
 }
 
-.compare {
+
+
+.compare-text {
 	padding: 0px;
 	border: 1px #aa312c solid;
 	border-radius: 20px;
 	background-color: #aa312c;
 	width: 200px;
-	margin: auto;
 	text-align: center;
-	font-family:Futura;
-	font-size: 23px;
+	font-family:Arial;
+	font-size: 20px;
+	margin: auto;
+	
+}
+
+
+.compare{
+	margin-bottom: 300px;
+}
+
+.machinebg{
+	display: block;
+	margin-top: 100px;
+
 }
 
 /*select*/
 
 #select-body {
-	background-image: url("../img/selectpageBg.jpg");
+	background-image: url("../img/pageBg.jpg");
 }
+
+.home{
+	color: white;
+	font-size: 20px;
+	margin-top: 50px;
+	padding: 20px;
+}
+
 .select-container {
 	/*margin-bottom: 1080px;*/
 }
@@ -93,7 +115,7 @@ h1 {
 }
 
 .machine-item {
-
+	margin-bottom: 50px;
 }
 
 .machine-item div {
