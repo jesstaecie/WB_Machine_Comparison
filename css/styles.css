@@ -23,7 +23,11 @@ body {
 	min-width: 1024px;
 	text-align:center;
 	padding: 0.5px;
-	
+
+	height: 40px;
+  	line-height: 40px;
+ 	white-space: nowrap;
+
 }
 
 a:link {
@@ -55,7 +59,7 @@ a:hover .compare-text:hover {
 .index-container {
 	position: relative;
 	width: auto;
-	margin-bottom: 645px;
+	margin-bottom: 532px;
 }
 
 .content h1 {
@@ -132,13 +136,16 @@ a:hover .compare-text:hover {
 
 .machine-item {
 	margin-bottom: 50px;
+
 }
 
 .machine-item div {
-	background-color: grey;
 	width: 250px;
+
 }
 
-.text-center {
+.machine-greybox{
 	padding: 10px;
+	background-color: rgba(0,0,0,0.7);
+	font-weight: bold;
 }
