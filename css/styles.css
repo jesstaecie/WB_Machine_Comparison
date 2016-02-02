@@ -58,10 +58,10 @@ a:hover .compare-text:hover {
 	margin-bottom: 645px;
 }
 
-h1 {
+.content h1 {
 	text-align:center;
-	margin-top: 60px !important;
-	margin-bottom: 60px !important;
+	margin-top: 60px ;
+	margin-bottom: 60px ;
 	font-family: Arial;
 	font-size: 40px;
 }
@@ -98,11 +98,15 @@ h1 {
 	background-image: url("../img/pageBg.jpg");
 }
 
-.home{
+.back-text{
 	color: white;
-	font-size: 20px;
-	margin-top: 50px;
-	padding: 20px;
+	font-size: 15px;
+	background-color: #aa312c;
+	padding: 8px 15px;
+}
+
+.back {
+	margin-bottom: 50px;
 }
 
 .select-container {
@@ -117,8 +121,12 @@ h1 {
 	font-size: 20px;
 }
 
+.selection-text h1{
+	margin-top: 50px;
+}
+
 .select-machines-wrapper {
-	padding-top: 100px;
+	padding-top: 6px;
 	background-color: white;
 }
 
@@ -129,4 +137,8 @@ h1 {
 .machine-item div {
 	background-color: grey;
 	width: 250px;
+}
+
+.text-center {
+	padding: 10px;
 }
