@@ -27,14 +27,22 @@ body {
 }
 
 a:link {
-	color: #333;
+	color: white;
 	text-decoration:none;
 }
 
 a:hover {
-	color:#FFF;
-	text-decoration:none;
+	color: #ffffff !important;
+	text-decoration:none !important;
 }
+
+
+a:hover .compare-text:hover {
+	color: #eaeaea !important;
+	text-decoration:none !important;
+}
+
+
 
 
 /*index*/
@@ -47,13 +55,13 @@ a:hover {
 .index-container {
 	position: relative;
 	width: auto;
-	margin-bottom: 740px;
+	margin-bottom: 645px;
 }
 
 h1 {
 	text-align:center;
-	margin-top: 20px;
-	margin-bottom: 50px;
+	margin-top: 60px !important;
+	margin-bottom: 60px !important;
 	font-family: Arial;
 	font-size: 40px;
 }
