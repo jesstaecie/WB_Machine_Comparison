@@ -7,6 +7,8 @@
 
 	<title>WB Machine Comparison app</title>
 
+	<script type="text/javascript"></script>
+
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<script src="js/jquery-2.2.0.js"></script>
 	<script src="js/common-includes.js"></script>
@@ -19,6 +21,19 @@
 	<script src="js/bootstrap.min.js"></script> 
 
 	<script src="js/select.js"></script>
+
+	
+<script>
+	function changeImage() {
+	var image = document.getElementByID('eagleaeroadd');
+	if (image.src = ("eagleaeroadd")) {
+		image.src = "img/redadd.png";
+	} 
+	else {
+		image.src = "img/whiteadd.png";
+	}
+
+</script>
 
 
 	<!-- Latest compiled and minified CSS -->
@@ -76,7 +91,7 @@
 							<div class="center-block">
 								<img src="img/wb-img/wb-thumbnails/eagle-aero.jpg" class="img-responsive" >
 								<div class="machine-greybox text-center" style="color:white">
-									Eagle AERO <img src="img/whiteadd.png" width="20" height="20" align="right" id="eagleaero">
+									Eagle AERO <img src="img/whiteadd.png" width="20" height="20" align="right" id="eagleaeroadd" >
 								</div> 
 							</div>
 						</div>
@@ -84,7 +99,7 @@
 							<div class="center-block">
 								<img src="img/wb-img/wb-thumbnails/iHawk Aero.jpg" class="img-responsive" >
 								<div class="machine-greybox text-center" style="color:white">
-									iHawk AERO <img src="img/whiteadd.png" width="20" height="20" align="right">
+									iHawk AERO <img src="img/whiteadd.png" width="20" height="20" align="right" id="ihawkaeroadd">
 								</div>
 							</div>					
 						</div>
@@ -452,6 +467,4 @@
 			</div>
 		</div>
 	</div>
-	<div id="footer"></div>
-</body>
-</html>
+
