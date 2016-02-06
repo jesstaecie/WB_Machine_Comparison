@@ -4,25 +4,29 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=768">
 
 	<title>WB Machine Comparison app</title>
-	
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
 
-	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<!-- Jquery -->
+	<script src="js/jquery-2.2.0.js"></script>
+	<script src="js/common-includes.js"></script>
+
+	<!-- Bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Optional theme -->
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-	<!-- Latest compiled and minified JavaScript -->
 	<script src="js/bootstrap.min.js"></script>
+
+	<script src="js/compare.js"></script>
 </head>
 
 
 
 <body id="compare-body">
 	<div id="header"></div>
-	<div class="compare-container">
 
+	<div class="compare-container">
 		<div class="compare-breadcrumbs">
 			<div class="breadcrumbs-text">
 				<a href="Wirebond_comparison.html" style="color:white"> Home / </a>
@@ -33,44 +37,80 @@
 
 		<div class="comparison-wrapper">
 
-			<div  class="back">
-				<span class="back-text"> 
-					<a href= "select.html" style="color:white"> Back </a>
-				</span>
+			<div class="buttons">
+				<div  class="back">
+					<span class="back-text">
+						<a href= "select.html" style="color:white"> Back </a>
+					</span>
+				</div>
 			</div>
 
-
-		
-
 			<div class="row">
-				<div class="col-sm-offset-3 col-sm-6">
+
+				<div class="col-sm-2">
+					 sidebar sidebar sidebar sidebar sidebar
+				</div>
+				<div class="col-sm-10">
 
 					<div class="row">
-						<div class="col-sm-6 machine-to-compare">
-							<div class="center-block">
-								<div class="machine-name">
-									
-								</div>
-								<img src="img/wb-img/wb-thumbnails/eagle-aero.jpg" class="img-responsive" align="left">
-
-							</div>
+						<div class="col-sm-6 compare-machine-item">
+							<!-- <div class="center-block"> -->
+								<div class="compare-machine-name text-center">Machine Name</div>
+								<img src="img/wb-img/wb-thumbnails/eagle-aero.jpg" class="img-responsive">
+							<!-- </div> -->
 						</div>
 
-						<div class="col-sm-6 machine-to-compare">
-							<div class="center-block">
-								<img src="img/wb-img/wb-thumbnails/eagle-aero.jpg" class="img-responsive" align="right">
-
-							</div>
+						<div class="col-sm-6 compare-machine-item">
+							<!-- <div class="center-block"> -->
+								<div class="compare-machine-name text-center">Machine Name</div>
+								<img src="img/wb-img/wb-thumbnails/eagle-aero.jpg" class="img-responsive">
+							<!-- </div> -->
 						</div>
-
 					</div>
 
 				</div>
 			</div>
 
+			<div class="row">
+				<div class="col-sm-2">
+					<div>
+						Bond placement repeatability
+					</div>
+					<div>
+						Bond area
+					</div>
+					<div>
+						Loop types
+					</div>
 
 
-		
+				</div>
+				<div class="col-sm-10">
+					<div class="row">
+						<div class="col-sm-6">
+							<div>+/- 3.0up</div>
+						</div>
+						<div class="col-sm-6">
+							<div>+/- 3.1up</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<div>54mm</div>
+						</div>
+						<div class="col-sm-6">
+							<div>33mm</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
 
 
 
