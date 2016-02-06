@@ -106,7 +106,7 @@ a:hover .compare-text:hover {
 }
 
 
-.back {
+	.back {
 	display: block;
 	float: left;
 	margin-top:5px;
@@ -156,17 +156,17 @@ a:hover .compare-text:hover {
 	background-color: white;
 }
 
-.machine-item {
+.select-machine-item {
 	margin-bottom: 50px;
 }
 
-.machine-item > div {
+.select-machine-item > div {
 	width: 250px;
 	border: 1px #d9d9d9 solid;
 	margin-top: 20px;
 }
 
-.machine-item-select {
+.select-machine-item-select {
 	cursor: pointer;
 }
 
@@ -191,11 +191,15 @@ a:hover .compare-text:hover {
 	background-image: url("../img/pageBg.jpg");
 }
 
+.compare-container {
+	width: 80%;
+	margin: 0 auto;
+}
+
 .comparison-wrapper {
 	padding: 6px;
 	background-color: white;
 }
-
 
 .compare-breadcrumbs {
 	background-color: #999999 !important;
@@ -207,12 +211,14 @@ a:hover .compare-text:hover {
 	margin-bottom: 50px;
 }
 
+.compare-machine-item > div {
+	width: 250px;
+	border: 1px #d9d9d9 solid;
+	margin-top: 20px;
+}
 
-
-.machine-name {
+.compare-machine-name {
 	background-color: #999999;
-	width: 120px;
 	padding: 20px 0;
-	display: block;
-	position: inherit;
+	font-weight: bold
 }
