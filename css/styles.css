@@ -4,7 +4,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	min-height: 100vh;
-	min-width: 1024px;	
+	min-width: 1024px;
 }
 
 #header {
@@ -25,8 +25,8 @@ body {
 	padding: 0.5px;
 
 	height: 40px;
-  	line-height: 40px;
- 	white-space: nowrap;
+	line-height: 40px;
+	white-space: nowrap;
 }
 
 a:link {
@@ -85,7 +85,7 @@ a:hover .compare-text:hover {
 	margin-bottom: 300px;
 }
 
-.machinebg{
+.machinebg {
 	display: block;
 	margin-top: 100px;
 
@@ -102,7 +102,7 @@ a:hover .compare-text:hover {
 	background-color: white;
 	width: 100%;
 	height: 50px;
-	
+
 }
 
 
@@ -110,11 +110,11 @@ a:hover .compare-text:hover {
 	display: block;
 	float: left;
 	margin-top:5px;
-	
+
 
 }
 
-.back-text{
+.back-text {
 	color: white;
 	font-size: 15px;
 	background-color: #aa312c;
@@ -127,7 +127,7 @@ a:hover .compare-text:hover {
 	margin-top:5px;
 }
 
-.compareproduct-text{
+.compareproduct-text {
 	color: white;
 	font-size: 15px;
 	background-color: #aa312c;
@@ -142,11 +142,11 @@ a:hover .compare-text:hover {
 	margin-bottom: 50px;
 }
 
-.selection-text div {
+.selection-text > div {
 	font-size: 30px;
 }
 
-.selection-text h1{
+.selection-text > h1{
 	margin-top: 50px;
 	font-size: 50px;
 }
@@ -160,15 +160,17 @@ a:hover .compare-text:hover {
 	margin-bottom: 50px;
 }
 
-.machine-item div {
+.machine-item > div {
 	width: 250px;
 	border: 1px #d9d9d9 solid;
 	margin-top: 20px;
-
-
 }
 
-.machine-greybox{
+.machine-item-select {
+	cursor: pointer;
+}
+
+.machine-greybox {
 	padding: 10px;
 	background-color: rgba(0,0,0,0.7);
 	font-weight: bold;
@@ -184,8 +186,6 @@ a:hover .compare-text:hover {
 	color: white;
 }
 
-
-
 /*compare*/
 #compare-body {
 	background-image: url("../img/pageBg.jpg");
@@ -194,7 +194,6 @@ a:hover .compare-text:hover {
 .comparison-wrapper {
 	padding: 6px;
 	background-color: white;
-
 }
 
 
@@ -217,4 +216,3 @@ a:hover .compare-text:hover {
 	display: block;
 	position: inherit;
 }
-
