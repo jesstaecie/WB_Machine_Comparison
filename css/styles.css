@@ -121,10 +121,25 @@ a:hover .compare-text:hover {
 	padding: 8px 15px;
 }
 
+.sidebar ul li{
+	background-color: #aa312c;
+	padding: 5px;
+	width: 155px;
+	margin: 5px 0px !important;
+	color: white;
+	font-weight: bold;
+	list-style: none;
+	
+
+
+}
+
 .compare-product {
 	display: block;
 	float: right;
-	margin-top:5px;
+	margin:50px;
+	height: auto;
+	cursor: pointer;
 }
 
 .compareproduct-text {
