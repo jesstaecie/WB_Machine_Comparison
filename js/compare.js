@@ -12,15 +12,20 @@ $ (function () {
 
 
 
-
-
-
-	  // function GetData(cell,row){
-	  // var excel = new ActiveXObject("Excel.Application"); //creates a new ref obj of ActiveXObject for excel application
-	  // var excel_file = excel.Workbooks.Open("D:\\jess - work\2016\flash_comparison\machine comparison list.csv"); //locate excel file
-	  // var excel_sheet = excel.Worksheets("machine comparison list"); //sheet in excel we are using
-	  // var data = excel_sheet.Cells(cell,row).Value; 
-	  // document.getElementById('compare-machine-name').innerText =data; //get data at the specific cell and row position from this sheet
-	  // console.log (excel);
+	  function GetData(cell,row){
+	  var excel = new ActiveXObject("Excel.Application"); //creates a new ref obj of ActiveXObject for excel application
+	  var excel_file = excel.Workbooks.Open("D:\\jess - work\2016\flash_comparison\machine comparison list.csv"); //locate excel file
+	  var excel_sheet = excel.Worksheets("machine comparison list"); //sheet in excel we are using
+	  var data = excel_sheet.Cells(cell,row).Value; 
+	  document.getElementById('compare-machine-name').innerText =data; //get data at the specific cell and row position from this sheet
+	  console.log (excel);
    }
+
+   
+
+
+
+
+
+   
 });
