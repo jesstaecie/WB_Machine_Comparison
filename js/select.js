@@ -34,14 +34,15 @@ $ (function () {
 
 			if (firstMachineItemId != undefined && secondMachineItemId != undefined) { // full
 				$(".select-machine-item-select")
-				.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]")
+				.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]") //plus three strings tgt => .machineitem[data-id=5]
 				.not(".select-machine-item-select[data-machine-id="+secondMachineItemId+"]")
 				.attr("src", "img/fadedadd.png");
+
 
 				$(".compare-product").show();
 			} else { // not full
 				$(".select-machine-item-select")
-				.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]")
+				.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]") //will select either one with id
 				.not(".select-machine-item-select[data-machine-id="+secondMachineItemId+"]")
 				.attr("src", "img/whiteadd.png");
 
@@ -58,5 +59,5 @@ $ (function () {
 			var url = "compare.html" + "?id=" + firstMachineItemId + "," + secondMachineItemId;
 			window.location = url;
 		});
-
+ 
 });
