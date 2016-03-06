@@ -1,4 +1,27 @@
-$ (function () {
+$(function () {
+		function machineItemRowHtml(machineName, machineId) {
+			return (
+				'<div class="col-sm-4 select-machine-item">'
+					+ '<div class="center-block">'
+						+ '<img src="img/wb-img/wb-thumbnails/eagle-aero.jpg" class="img-responsive" >'
+							+ '<div class="machine-greybox text-center" style="color:white">'
+								+ machineName	+ ' <img src="img/whiteadd.png" width="20" height="20" align="right" data-machine-id="' + machineId + '" class="select-machine-item-select">'
+							+ '</div>'
+					+ '</div>'
+				+ '</div>'
+			);
+		}
+
+		$.get("machinelist.csv", function(csvString) {
+				var csvObject = Papa.parse(csvString);
+				console.log(csvObject);
+				var title = csvObject.data[0];
+
+				for(var i=0; i<csvObject.data.length-1; i++) {
+					$('#machine-items-container').append(machineItemRowHtml(csvObject.data[i+1][1], csvObject.data[i+1][0]));
+				}
+		});
+
 		$(".compare-product").hide();
 
 		// When user selects 2 buttons,
@@ -59,5 +82,5 @@ $ (function () {
 			var url = "compare.html" + "?id=" + firstMachineItemId + "," + secondMachineItemId;
 			window.location = url;
 		});
- 
+
 });
