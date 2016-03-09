@@ -18,8 +18,10 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/papaparse.js"></script>
 
 	<script src="js/compare.js"></script>
+	
 </head>
 
 
@@ -51,24 +53,24 @@
 				<div class="col-sm-2 sidebar">
 
 					<ul>
-						<li class-="bonding-capability"> Bonding Capability </li>
-						<li class="wire-looping"> Wire Looping </li>
-						<li class="vision-optics"> Vision / Optics </li>
-						<li class="workholder"> Workholder </li>
-						<li class="loader-unloader"> Loader / Unloader </li>
-						<li class="wire-feed"> Wire Feed </li>
-						<li class="bondhead"> Bondhead </li>
-						<li class="misc"> Misc </li>
-						<li class="options"> Options </li>
-						<li class="other-features"> Other Features </li>
+						<li class-="bonding-capability bondcap-container"> Bonding Capability </li>
+						<li class="wire-looping wireloop-container"> Wire Looping </li>
+						<li class="vision-optics visionop-container"> Vision / Optics </li>
+						<li class="workholder workholder-container"> Workholder </li>
+						<li class="loader-unloader loadunload-container"> Loader / Unloader </li>
+						<li class="wire-feed wirefeed-container"> Wire Feed </li>
+						<li class="bondhead bondhead-container"> Bondhead </li>
+						<li class="misc misc-container"> Misc </li>
+						<li class="options op-container"> Options </li>
+						<li class="other-features otherfeat-container"> Other Features </li>
 					</ul>
 				</div>
 
-				<div class="col-sm-2">
+				<div class="col-sm-2 blankspace">
 					<!-- blank space to push the text right -->
 				</div>
 
-				<div class="col-sm-8">
+				<div class="col-sm-8 machineimage">
 
 					<div class="row">
 						<div class="col-sm-6 compare-machine-item">
@@ -89,47 +91,50 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="datainfo-container">	
+				<div class="row">
 
-				<div class="col-sm-2">
-				</div>
-
-				<div class="col-sm-2">
-					<div>
-						Bond placement repeatability
-					</div>
-					<div>
-						Bond area
-					</div>
-					<div>
-						Loop types
+					<div class="col-sm-2">
 					</div>
 
-					<div class="csvimporthere">
-					</div>
 
-				</div>
-				<div class="col-sm-8">
-					<div class="row">
-						<div class="col-sm-6">
-							<div>+/- 3.0up</div>
+					<div class="col-sm-2">
+						<div>
+							Bond placement repeatability
 						</div>
-						<div class="col-sm-6">
-							<div>+/- 3.1up</div>
+						<div>
+							Bond area
 						</div>
+						<div>
+							Loop types
+						</div>
+
+						<div class="csvimporthere">
+						</div>
+
 					</div>
 
-					<div class="row">
-						<div class="col-sm-6">
-							<div>54mm</div>
+					<div class="col-sm-8">
+						<div class="row">
+							<div class="col-sm-6">
+								<div>+/- 3.0up</div>
+							</div>
+							<div class="col-sm-6">
+								<div>+/- 3.1up</div>
+							</div>
 						</div>
-						<div class="col-sm-6">
-							<div>33mm</div>
+
+						<div class="row">
+							<div class="col-sm-6">
+								<div>54mm</div>
+							</div>
+							<div class="col-sm-6">
+								<div>33mm</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 
 
 
