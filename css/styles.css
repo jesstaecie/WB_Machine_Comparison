@@ -106,7 +106,7 @@ a:hover .compare-text:hover {
 }
 
 
-	.back {
+.back {
 	display: block;
 	float: left;
 	margin-top:5px;
@@ -121,18 +121,6 @@ a:hover .compare-text:hover {
 	padding: 8px 15px;
 }
 
-.sidebar ul li{
-	background-color: #aa312c;
-	padding: 7px 10px;
-	width: 155px;
-	margin: 5px 0px !important;
-	color: white;
-	font-weight: bold;
-	list-style: none;
-	
-
-
-}
 
 .compare-product {
 	display: block;
@@ -202,6 +190,27 @@ a:hover .compare-text:hover {
 }
 
 /*compare*/
+
+.sidebar ul li{
+	background-color: #aa312c;
+	padding: 7px 10px;
+	width: 155px;
+	margin: 5px 0px !important;
+	color: white;
+	font-weight: bold;
+	list-style: none;
+	cursor: pointer ;
+}
+
+
+
+.sidebar ul li:hover {
+	background-color: #999999 !important;
+	text-decoration:none !important;
+}
+
+
+
 #compare-body {
 	background-image: url("../img/pageBg.jpg");
 }
@@ -237,3 +246,8 @@ a:hover .compare-text:hover {
 	padding: 20px 0;
 	font-weight: bold
 }
+
+.datainfo-container {
+	width: !important;
+}
+
