@@ -191,7 +191,7 @@ a:hover .compare-text:hover {
 
 /*compare*/
 
-.sidebar ul li{
+.sidebar ul li {
 	background-color: #aa312c;
 	padding: 7px 10px;
 	width: 155px;
@@ -204,12 +204,12 @@ a:hover .compare-text:hover {
 
 
 
-.sidebar li:hover {
+.nav li:hover {
 	background-color: #999999 !important;
 	text-decoration:none !important;
 }
 
-.sidebar li:active li:focus {
+.nav-pills > li:active , .nav-pills > li:active > li:focus {
 	background-color: #999999 !important;
 	text-decoration:none !important;
 }
