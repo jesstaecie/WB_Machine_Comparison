@@ -10,19 +10,6 @@ $ (function () {
       console.log(firstMachineId, secondMachineId);
       console.log (queryStringList);
   }
-
-
-
-    // function GetData(cell,row){
-    // var excel = new ActiveXObject("Excel.Application"); //creates a new ref obj of ActiveXObject for excel application
-    // var excel_file = excel.Workbooks.Open("D:\\jess - work\2016\flash_comparison\machine comparison list.csv"); //locate excel file
-    // var excel_sheet = excel.Worksheets("machine comparison list"); //sheet in excel we are using
-    // var data = excel_sheet.Cells(cell,row).Value; 
-    // document.getElementById('compare-machine-name').innerText =data; //get data at the specific cell and row position from this sheet
-    // console.log (excel);
-   // }
-
-
  });
 
 // $(function () {
@@ -47,30 +34,60 @@ $ (function () {
 // }
 
 
-$(".sidebar").hide();
-console.log("pass");
-$(".bonding-capability").click(function(){
-$(".datainfo-container").hide();
-
-}) ;
-
-
-
-
-
-
+// $(".sidebar").hide();
+// console.log("pass");
 // $(".bonding-capability").click(function(){
-//   $(".sidebar li").removeClass("active");
-//   $(this).addClass("active");
+// $(".datainfo-container").hide();
 
-// })
+// }) ;
+ 
 
-$(".sidebar li").click(function(){
-  var OurClass = $(this).attr('class');
 
-  $(".sidebar li").removeClass('active');
-  $(this).parent().addClass('active');
 
+$("#bonding-capability").click(function(){
+  console.log("a");
+  $(".nav li").removeClass();
   
 
+  $(this).addClass("active");
+  console.log("b");
+  $(".col-sm-2 .dataCate").hide(); 
+ console.log("c");
+ 
+
 });
+
+// $(".sidebar li a").click(function(){
+//   var OurClass = $(this).attr('class');
+
+//   $(".sidebar li").removeClass('active');
+//   $(this).parent().addClass('active');
+
+
+
+// });
+
+
+
+$(function (){
+  $.get(".machinelist.csv", function(csvString) {
+    var csvObject = Papa.parse(csvString);
+
+    for (var i=0; i<csvObject.data;length-1; i++) {
+      $('machineimage-container').append(machineItemToDisplay (csvObject.data[i+1][1], csvObject.data[i+1][2]));
+    }
+  }
+
+});
+
+function machineItemToDisplay (machineName, machineImage) {
+  return (
+'<div class="col-sm-6 compare-machine-item">'
+            + '<div class="center-block">'
+              + '<div class="compare-machine-name first-machine text-center">' + machineName + '</div>'
+               + '<img src="img/wb-img/wb-thumbnails/' +machineImage + '" class="img-responsive">'
+                + '</div>'
+            +'</div>'
+  );
+}
+
