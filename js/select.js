@@ -4,6 +4,8 @@ $(function () {
 				var csvObject = Papa.parse(csvString);
 				var title = csvObject.data[0];
 
+				// csvObject.data.length-1, -1 because papa library has extra
+				// __proto__(papa's functions inside) array appended after last array
 				for(var i=0; i<csvObject.data.length-1; i++) {
 					$('#machine-items-container').append(machineItemRowHtml(csvObject.data[i+1][1], csvObject.data[i+1][0], csvObject.data[i+1][2]));
 				}
