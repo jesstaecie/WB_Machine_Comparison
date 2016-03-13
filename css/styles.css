@@ -214,6 +214,9 @@ a:hover .compare-text:hover {
 	text-decoration:none !important;
 }
 
+.nav li.active {
+	background-color: #F48B86;
+}
 
 #compare-body {
 	background-image: url("../img/pageBg.jpg");
@@ -254,4 +257,3 @@ a:hover .compare-text:hover {
 .datainfo-container {
 	width: !important;
 }
-
