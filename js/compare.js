@@ -61,10 +61,15 @@ var MACHINE_EASY_CU_LOOPING_INDEX = 59;
 var MACHINE_SMART_WIRE_HANDLER_INDEX = 60;
 var MACHINE_AUTO_WIRE_RETHREAD_INDEX = 61;
 
+//------ This function is to retrieve ID from url after selection of machines to compare--------\\
+//1. get url
+//2. split delimeter is '?''
+//3. if after split, the length is more than 1, need to split again using ',' to get id
+//4. using [] to get the respective 1st and 2nd id
 $(function () {
     var href = location.href;
     var hrefList = href.split('?');
-    if (hrefList.length > 1) { //split by ? and only get 1 length, prevent from failing. dont have a ? inside href. *(sth?sth = length = 1)
+    if (hrefList.length > 1) { //split by ? and only get 1 length, prevent from failing. Don't have a ? inside href. *(sth?sth = length = 1)
       var queryString = hrefList[1]; //id=3,2
       var queryStringList = queryString.replace('id=','').split(','); //["3", "2"]
       var firstMachineId = queryStringList[0];
@@ -135,13 +140,15 @@ function machineInfoToRender(queryStringList, csvObjectData) {
   for (var i=0; i<queryStringList.length; i++) {
     var machineId = parseInt(queryStringList[i]);
     // See: https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push
-    machineInfoData.push(csvObjectData[machineId])
+    machineInfoData.push(csvObjectData[machineId]) //push new machine info data to existing data of array at the end
   }
 
   stringToRender += bondingCapabilityToRender(machineFields, machineInfoData);
   stringToRender += wireLoopingToRender(machineFields, machineInfoData);
-  stringToRender += visionOptionsToRender(machineFields, machineInfoData);
-
+  stringToRender += visionOpticsToRender(machineFields, machineInfoData);
+  stringToRender += workholderToRender(machineFields, machineInfoData);
+  stringToRender += loaderUnloaderToRender(machineFields, machineInfoData);
+  stringToRender += wireFeedToRender(machineFields, machineInfoData);
   return stringToRender;
 }
 
@@ -212,7 +219,7 @@ function wireLoopingToRender(machineFields, machineInfoData) {
   return stringToRender;
 }
 
-function visionOptionsToRender(machineFields, machineInfoData) {
+function visionOpticsToRender(machineFields, machineInfoData) {
   var stringToRender = "";
   var opticsLensMagnification = [];
   var sScanVisionEngine = [];
@@ -244,6 +251,83 @@ function visionOptionsToRender(machineFields, machineInfoData) {
   return stringToRender;
 }
 
+function workholderToRender(machineFields, machineInfoData) {
+  var stringToRender = "";
+  var xyMotorsType = [];
+  var lfWidth = [];
+  var lfLength = [];
+  var lfThickness = [];
+  var dieSiteIndexingPitch = [];
+
+  for (var i=0; i<machineInfoData.length; i++) {
+    xyMotorsType.push(machineInfoData[i][MACHINE_XY_MOTORS_TYPE_INDEX]);
+    lfWidth.push(machineInfoData[i][MACHINE_L_F_WIDTH_INDEX]);
+    lfLength.push(machineInfoData[i][MACHINE_L_F_LENGTH_INDEX]);
+    lfThickness.push(machineInfoData[i][MACHINE_L_F_THICKNESS_INDEX]);
+    dieSiteIndexingPitch.push(machineInfoData[i][MACHINE_DIE_SITE_INDEXING_PITCH_INDEX]);
+  }
+  stringToRender += '<div class="col-xs-10 category-field-name-container" id="workholder-field-name-container" style="display:none;">';
+  stringToRender += machineFieldRow(machineFields[MACHINE_XY_MOTORS_TYPE_INDEX], xyMotorsType);
+  stringToRender += machineFieldRow(machineFields[MACHINE_L_F_WIDTH_INDEX], lfWidth);
+  stringToRender += machineFieldRow(machineFields[MACHINE_L_F_LENGTH_INDEX], lfLength);
+  stringToRender += machineFieldRow(machineFields[MACHINE_L_F_THICKNESS_INDEX], lfThickness);
+  stringToRender += machineFieldRow(machineFields[MACHINE_DIE_SITE_INDEXING_PITCH_INDEX], dieSiteIndexingPitch);
+  stringToRender += '</div>';
+
+  return stringToRender;
+}
+
+function loaderUnloaderToRender(machineFields, machineInfoData) {
+  var stringToRender = "";
+  var noOfMagazine = [];
+  var noOfLevels = [];
+  var magazineWidth = [];
+  var magazineLength = [];
+  var magazineHeight = [];
+  var slotPitch = [];
+
+  for (var i=0; i<machineInfoData.length; i++) {
+    noOfMagazine.push(machineInfoData[i][MACHINE_NO_OF_MAGAZINE_INDEX]);
+    noOfLevels.push(machineInfoData[i][MACHINE_NO_OF_LEVELS_INDEX]);
+    magazineWidth.push(machineInfoData[i][MACHINE_MAGAZINE_WIDTH_INDEX]);
+    magazineLength.push(machineInfoData[i][MACHINE_MAGAZINE_LENGTH_INDEX]);
+    magazineHeight.push(machineInfoData[i][MACHINE_MAGAZINE_HEIGHT_INDEX]);
+    slotPitch.push(machineInfoData[i][MACHINE_SLOT_PITCH_INDEX]);
+  }
+  stringToRender += '<div class="col-xs-10 category-field-name-container" id="loader-unloader-field-name-container" style="display:none;">';
+  stringToRender += machineFieldRow(machineFields[MACHINE_NO_OF_MAGAZINE_INDEX], noOfMagazine);
+  stringToRender += machineFieldRow(machineFields[MACHINE_NO_OF_LEVELS_INDEX], noOfLevels);
+  stringToRender += machineFieldRow(machineFields[MACHINE_MAGAZINE_WIDTH_INDEX], magazineWidth);
+  stringToRender += machineFieldRow(machineFields[MACHINE_MAGAZINE_LENGTH_INDEX], magazineLength);
+  stringToRender += machineFieldRow(machineFields[MACHINE_MAGAZINE_HEIGHT_INDEX], magazineHeight);
+  stringToRender += machineFieldRow(machineFields[MACHINE_SLOT_PITCH_INDEX], slotPitch);
+  stringToRender += '</div>';
+
+  return stringToRender;
+}
+
+function wireFeedToRender(machineFields, machineInfoData) {
+  var stringToRender = "";
+  var spoolDiameter = [];
+  var spoolWidth = [];
+  var wireCount = [];
+  var wireEnd = [];
+
+  for (var i=0; i<machineInfoData.length; i++) {
+    spoolDiameter.push(machineInfoData[i][MACHINE_SPOOL_DIAMETER_INDEX]); 
+    spoolWidth.push(machineInfoData[i][MACHINE_SPOOL_WIDTH_INDEX]);
+    wireCount.push(machineInfoData[i][MACHINE_WIRE_COUNT_INDEX]);
+    wireEnd.push(machineInfoData[i][MACHINE_WIRE_END_INDEX]);
+  }
+  stringToRender += '<div class="col-xs-10 category-field-name-container" id="wire-feed-field-name-container" style="display:none;">';
+  stringToRender += machineFieldRow(machineFields[MACHINE_SPOOL_DIAMETER_INDEX], spoolDiameter);
+  stringToRender += machineFieldRow(machineFields[MACHINE_SPOOL_WIDTH_INDEX], spoolWidth);
+  stringToRender += machineFieldRow(machineFields[MACHINE_WIRE_COUNT_INDEX], wireCount);
+  stringToRender += machineFieldRow(machineFields[MACHINE_WIRE_END_INDEX], wireEnd);
+  stringToRender += '</div>';
+
+  return stringToRender;
+}
 
 
 // Return each machine info row
