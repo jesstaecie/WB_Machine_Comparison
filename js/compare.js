@@ -149,6 +149,10 @@ function machineInfoToRender(queryStringList, csvObjectData) {
   stringToRender += workholderToRender(machineFields, machineInfoData);
   stringToRender += loaderUnloaderToRender(machineFields, machineInfoData);
   stringToRender += wireFeedToRender(machineFields, machineInfoData);
+  stringToRender += bondHeadToRender(machineFields, machineInfoData);
+  stringToRender += miscToRender(machineFields, machineInfoData);
+  stringToRender += optionsToRender(machineFields, machineInfoData);
+  stringToRender += otherFeaturesToRender(machineFields, machineInfoData);
   return stringToRender;
 }
 
@@ -329,6 +333,130 @@ function wireFeedToRender(machineFields, machineInfoData) {
   return stringToRender;
 }
 
+function bondHeadToRender(machineFields, machineInfoData) {
+  var stringToRender = "";
+  var driveMotorType = [];
+  var wireClamp = [];
+  var bondTimeRange = [];
+  var ultrasonicMode = [];
+  var transducerFrequency = [];
+
+  for (var i=0; i<machineInfoData.length; i++) {
+    driveMotorType.push(machineInfoData[i][MACHINE_DRIVE_MOTOR_TYPE_INDEX]);
+    wireClamp.push(machineInfoData[i][MACHINE_WIRE_CLAMP_INDEX]);
+    bondTimeRange.push(machineInfoData[i][MACHINE_BOND_TIME_RANGE_INDEX]);
+    ultrasonicMode.push(machineInfoData[i][MACHINE_ULTRASONIC_MODE_INDEX]);
+    transducerFrequency.push(machineInfoData[i][MACHINE_TRANSDUCER_FREQUENCY_INDEX]);
+  }
+  stringToRender += '<div class="col-xs-10 category-field-name-container" id="bondhead-field-name-container" style="display:none;">';
+  stringToRender += machineFieldRow(machineFields[MACHINE_DRIVE_MOTOR_TYPE_INDEX], driveMotorType);
+  stringToRender += machineFieldRow(machineFields[MACHINE_WIRE_CLAMP_INDEX], wireClamp);
+  stringToRender += machineFieldRow(machineFields[MACHINE_BOND_TIME_RANGE_INDEX], bondTimeRange);
+  stringToRender += machineFieldRow(machineFields[MACHINE_ULTRASONIC_MODE_INDEX], ultrasonicMode);
+  stringToRender += machineFieldRow(machineFields[MACHINE_TRANSDUCER_FREQUENCY_INDEX], transducerFrequency);
+  stringToRender += '</div>';
+
+  return stringToRender;
+}
+
+function miscToRender(machineFields, machineInfoData) {
+  var stringToRender = "";
+  var manMachineInterface = [];
+  var storageMedia = [];
+  var powerInput = [];
+  var powerConsumption = [];
+  var minAirPressure = [];
+  var airConsumption = [];
+  var airQuality = [];
+  var environmentalRequirement = [];
+  var machineOutline = [];
+  var machineWeight = [];
+  var machineShippingWeight = [];
+
+  for (var i=0; i<machineInfoData.length; i++) {
+    manMachineInterface.push(machineInfoData[i][MACHINE_MAN_MACHINE_INTERFACE_INDEX]);
+    storageMedia.push(machineInfoData[i][MACHINE_STORE_MEDIA_INDEX]);
+    powerInput.push(machineInfoData[i][MACHINE_POWER_INPUT_INDEX]);
+    powerConsumption.push(machineInfoData[i][MACHINE_POWER_CONSUMPTION_INDEX]);
+    minAirPressure.push(machineInfoData[i][MACHINE_MINIMUM_AIR_PRESSURE_INDEX]);
+    airConsumption.push(machineInfoData[i][MACHINE_AIR_CONSUMPTION_INDEX]);
+    airQuality.push(machineInfoData[i][MACHINE_AIR_QUALITY_INDEX]);
+    environmentalRequirement.push(machineInfoData[i][MACHINE_ENVIRONMENTAL_REQUIREMENT_INDEX]);
+    machineOutline.push(machineInfoData[i][MACHINE_MACHINE_OUTLINE_INDEX]);
+    machineWeight.push(machineInfoData[i][MACHINE_MACHINE_WEIGHT_INDEX]);
+    machineShippingWeight.push(machineInfoData[i][MACHINE_MACHINE_SHIPPING_WEIGHT_INDEX]);
+  }
+  stringToRender += '<div class="col-xs-10 category-field-name-container" id="misc-field-name-container" style="display:none;">';
+  stringToRender += machineFieldRow(machineFields[MACHINE_MAN_MACHINE_INTERFACE_INDEX], manMachineInterface);
+  stringToRender += machineFieldRow(machineFields[MACHINE_STORE_MEDIA_INDEX], storageMedia);
+  stringToRender += machineFieldRow(machineFields[MACHINE_POWER_INPUT_INDEX], powerInput);
+  stringToRender += machineFieldRow(machineFields[MACHINE_POWER_CONSUMPTION_INDEX], powerConsumption);
+  stringToRender += machineFieldRow(machineFields[MACHINE_MINIMUM_AIR_PRESSURE_INDEX], minAirPressure);
+  stringToRender += machineFieldRow(machineFields[MACHINE_AIR_CONSUMPTION_INDEX], airConsumption);
+  stringToRender += machineFieldRow(machineFields[MACHINE_AIR_QUALITY_INDEX], airQuality);
+  stringToRender += machineFieldRow(machineFields[MACHINE_ENVIRONMENTAL_REQUIREMENT_INDEX], environmentalRequirement);
+  stringToRender += machineFieldRow(machineFields[MACHINE_MACHINE_OUTLINE_INDEX], machineOutline);
+  stringToRender += machineFieldRow(machineFields[MACHINE_MACHINE_WEIGHT_INDEX], machineWeight);
+  stringToRender += machineFieldRow(machineFields[MACHINE_MACHINE_SHIPPING_WEIGHT_INDEX], machineShippingWeight);
+  stringToRender += '</div>';
+
+  return stringToRender;
+}
+
+function optionsToRender(machineFields, machineInfoData) {
+  var stringToRender = "";
+  var indexers = [];
+  var materialHandlingKits = [];
+  var heavyWireKit = [];
+  var illuminationKit = [];
+  var qfnKit = [];
+  var cuApplication = [];
+
+  for (var i=0; i<machineInfoData.length; i++) {
+    indexers.push(machineInfoData[i][MACHINE_INDEXERS_INDEX]);
+    materialHandlingKits.push(machineInfoData[i][MACHINE_MATERIAL_HANDLING_KITS_INDEX]);
+    heavyWireKit.push(machineInfoData[i][MACHINE_HEAVY_WIRE_KIT_INDEX]);
+    illuminationKit.push(machineInfoData[i][MACHINE_ILLUMINATION_KIT_INDEX]);
+    qfnKit.push(machineInfoData[i][MACHINE_QFN_KIT_INDEX]);
+    cuApplication.push(machineInfoData[i][MACHINE_CU_APPLICATION_INDEX]);
+  }
+  stringToRender += '<div class="col-xs-10 category-field-name-container" id="options-field-name-container" style="display:none;">';
+  stringToRender += machineFieldRow(machineFields[MACHINE_INDEXERS_INDEX], indexers);
+  stringToRender += machineFieldRow(machineFields[MACHINE_MATERIAL_HANDLING_KITS_INDEX], materialHandlingKits);
+  stringToRender += machineFieldRow(machineFields[MACHINE_HEAVY_WIRE_KIT_INDEX], heavyWireKit);
+  stringToRender += machineFieldRow(machineFields[MACHINE_ILLUMINATION_KIT_INDEX], illuminationKit);
+  stringToRender += machineFieldRow(machineFields[MACHINE_QFN_KIT_INDEX], qfnKit);
+  stringToRender += machineFieldRow(machineFields[MACHINE_CU_APPLICATION_INDEX], cuApplication);
+  stringToRender += '</div>';
+
+  return stringToRender; 
+}
+
+function otherFeaturesToRender(machineFields, machineInfoData) {
+  var stringToRender = "";
+  var easyCuConversion = [];
+  var smartPR = [];
+  var easyCuLooping = [];
+  var smartWireHandling = [];
+  var autoWireRethread = [];
+
+  for (var i=0; i<machineInfoData.length; i++) {
+    easyCuConversion.push(machineInfoData[i][MACHINE_EASY_CU_CONVERSION_INDEX]);
+    smartPR.push(machineInfoData[i][MACHINE_SMART_PR_INDEX]);
+    easyCuLooping.push(machineInfoData[i][MACHINE_EASY_CU_LOOPING_INDEX]);
+    smartWireHandling.push(machineInfoData[i][MACHINE_SMART_WIRE_HANDLER_INDEX]);
+    autoWireRethread.push(machineInfoData[i][MACHINE_AUTO_WIRE_RETHREAD_INDEX]);
+  }
+  stringToRender += '<div class="col-xs-10 category-field-name-container" id="other-features-field-name-container" style="display:none;">';
+  stringToRender += machineFieldRow(machineFields[MACHINE_EASY_CU_CONVERSION_INDEX], easyCuConversion);
+  stringToRender += machineFieldRow(machineFields[MACHINE_SMART_PR_INDEX], smartPR);
+  stringToRender += machineFieldRow(machineFields[MACHINE_EASY_CU_LOOPING_INDEX], easyCuLooping);
+  stringToRender += machineFieldRow(machineFields[MACHINE_SMART_WIRE_HANDLER_INDEX], smartWireHandling);
+  stringToRender += machineFieldRow(machineFields[MACHINE_AUTO_WIRE_RETHREAD_INDEX], autoWireRethread);
+  stringToRender += '</div>';
+
+  return stringToRender; 
+}
 
 // Return each machine info row
 // Example:
