@@ -300,3 +300,13 @@ margin-bottom: 300px;
 .trysidebar-container {
 	height: 500px;
 }
+
+
+/*.compare-mc-item-container {
+	margin-left: 300px;
+}*/
+
+.machineone-container {
+	border: 1px black solid;
+	margin-left: 300px;
+}
