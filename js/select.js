@@ -9,7 +9,8 @@ $(function () {
 				for(var i=0; i<csvObject.data.length-2; i++) {
 					$('#machine-items-container').append(machineItemRowHtml(csvObject.data[i+1][1], csvObject.data[i+1][0], csvObject.data[i+1][2]));
 				}
-
+				console.log(csvObject);
+				
 
 				// On click setup
 				$(".compare-product").hide();
@@ -32,15 +33,15 @@ $(function () {
 							} else {
 								secondMachineItemId = undefined;
 							}
-							$(this).attr("src", "img/whiteadd.png");
+							$(this).attr("src", "img/white.png");
 
 					} else { // add
 						if (firstMachineItemId == undefined && machineId != secondMachineItemId) { // first container is empty
 							firstMachineItemId = machineId;
-							$(this).attr("src", "img/redadd.png");
+							$(this).attr("src", "img/red.png");
 						} else if (secondMachineItemId == undefined && machineId != firstMachineItemId) {
 							secondMachineItemId = machineId;
-							$(this).attr("src", "img/redadd.png");
+							$(this).attr("src", "img/red.png");
 						}
 
 					}
@@ -49,7 +50,7 @@ $(function () {
 						$(".select-machine-item-select")
 						.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]") //plus three strings tgt => .machineitem[data-id=5]
 						.not(".select-machine-item-select[data-machine-id="+secondMachineItemId+"]")
-						.attr("src", "img/fadedadd.png");
+						.attr("src", "img/faded.png");
 
 
 						$(".compare-product").show();
@@ -57,7 +58,7 @@ $(function () {
 						$(".select-machine-item-select")
 						.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]") //will select either one with id
 						.not(".select-machine-item-select[data-machine-id="+secondMachineItemId+"]")
-						.attr("src", "img/whiteadd.png");
+						.attr("src", "img/white.png");
 
 						$(".compare-product").hide();
 					}
@@ -83,7 +84,7 @@ function machineItemRowHtml(machineName, machineId, machineImage) {
 			+ '<div class="center-block">'
 				+ '<img src="img/wb-img/wb-thumbnails/'+ machineImage + '" class="img-responsive" >'
 					+ '<div class="machine-greybox text-center" style="color:white">'
-						+ machineName	+ ' <img src="img/whiteadd.png" width="20" height="20" align="right" data-machine-id="' + machineId + '" class="select-machine-item-select">'
+						+ machineName	+ ' <img src="img/white.png" width="20" height="20" align="right" data-machine-id="' + machineId + '" class="select-machine-item-select">'
 					+ '</div>'
 			+ '</div>'
 		+ '</div>'
