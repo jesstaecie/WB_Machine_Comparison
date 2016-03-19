@@ -249,22 +249,27 @@ a:hover .compare-text:hover {
 
 /* start of on hover row hightlight logic */
 
+/*highlight div im hovering, i.e the bond placement replacement field*/
 .machine-info-highlight:hover {
   background-color: yellow;
 }
 
+/*highlight div beside it, but it goes behind the grey bgnd*/
 .machine-info-highlight:hover + div {
   background-color: yellow;
 }
 
+/*beside the div there's one more inner div, which is grey background*/
 .machine-info-highlight:hover + div .machine-info-item-highlight {
   background-color: yellow;
 }
 
+/*highlight div next to the 2nd highlight*/
 .machine-info-highlight:hover + div + div {
   background-color: yellow;
 }
 
+/*same as third line, beside got one more inner div, but its doing for the 2nd grey div*/
 .machine-info-highlight:hover + div + div .machine-info-item-highlight {
   background-color: yellow;
 }

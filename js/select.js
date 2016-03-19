@@ -38,10 +38,10 @@ $(function () {
 					} else { // add
 						if (firstMachineItemId == undefined && machineId != secondMachineItemId) { // first container is empty
 							firstMachineItemId = machineId;
-							$(this).attr("src", "img/red.png");
+							$(this).attr("src", "img/green.png");
 						} else if (secondMachineItemId == undefined && machineId != firstMachineItemId) {
 							secondMachineItemId = machineId;
-							$(this).attr("src", "img/red.png");
+							$(this).attr("src", "img/green.png");
 						}
 
 					}
@@ -82,7 +82,7 @@ function machineItemRowHtml(machineName, machineId, machineImage) {
 	return (
 		'<div class="col-sm-4 select-machine-item">'
 			+ '<div class="center-block">'
-				+ '<img src="img/wb-img/wb-thumbnails/'+ machineImage + '" class="img-responsive" >'
+				+ '<img src="img/wb-img/wb-thumbnails-new/'+ machineImage + '" class="img-responsive" >'
 					+ '<div class="machine-greybox text-center" style="color:white">'
 						+ machineName	+ ' <img src="img/white.png" width="20" height="20" align="right" data-machine-id="' + machineId + '" class="select-machine-item-select">'
 					+ '</div>'

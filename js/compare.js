@@ -124,7 +124,7 @@ function machineImageToRender(queryStringList, csvObjectData) {
     stringToRender = stringToRender // append the dom to be rendered to existing stringToRender
     + '<div class="col-xs-4 compare-machine-item">'
       + '<div class="compare-machine-name first-machine text-center">' + machineName + '</div>'
-      + '<img src="img/wb-img/wb-thumbnails/' + machineImage + '" class="img-responsive">'
+      + '<img src="img/wb-img/wb-thumbnails-new/' + machineImage + '" class="img-responsive">'
     + '</div>'
   }
 
