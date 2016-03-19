@@ -77,6 +77,7 @@ $(function () {
 
       $.get("machinelist.csv", function(csvString) {
         var csvObject = Papa.parse(csvString);
+        // $(this).html().replace('±','&#xb1;');
 
         // Add machine image and name header to compare into machine-image-container
         $('#machine-image-container').append(machineImageToRender(queryStringList, csvObject.data));
@@ -119,10 +120,12 @@ function machineImageToRender(queryStringList, csvObjectData) {
     var machineImage =  csvObjectData[machineId][MACHINE_IMAGE_INDEX];
 
     stringToRender = stringToRender // append the dom to be rendered to existing stringToRender
+    // +'<div class="compare-machine-item-outer-container">'
     + '<div class="col-xs-4 compare-machine-item">'
       + '<div class="compare-machine-name first-machine text-center">' + machineName + '</div>'
       + '<img src="img/wb-img/wb-thumbnails/' + machineImage + '" class="img-responsive">'
     + '</div>'
+    // +'</div>'
   }
 
   return stringToRender;
@@ -475,4 +478,14 @@ function machineFieldRow(machineField, machineInfoList) {
   stringToRender += '</div>';
 
   return stringToRender;
+}
+
+function convert () {
+  var symbol = "±";
+  var symbolnew = "&#xb1";
+
+  symbol = symbol.replace(symbol, symbolnew);
+
+  return symbol;
+  console.log(symbol);
 }

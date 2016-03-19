@@ -38,10 +38,10 @@ $(function () {
 					} else { // add
 						if (firstMachineItemId == undefined && machineId != secondMachineItemId) { // first container is empty
 							firstMachineItemId = machineId;
-							$(this).attr("src", "img/red.png");
+							$(this).attr("src", "img/green.png");
 						} else if (secondMachineItemId == undefined && machineId != firstMachineItemId) {
 							secondMachineItemId = machineId;
-							$(this).attr("src", "img/red.png");
+							$(this).attr("src", "img/green.png");
 						}
 
 					}
