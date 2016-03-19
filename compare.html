@@ -46,9 +46,20 @@
 				</div>
 			</div>
 
+
+			<!-- Upper container -->
 			<div class="row">
-				<div class="sidebar-container">
-					<div class="col-xs-2 sidebar">
+				<!-- Needs to offset the sidebar-container col-xs-2 -->
+				<div class="col-xs-offset-2 col-xs-10 machineimage">
+					<div class="row" id="machine-image-container">
+						<!-- this is where compare.js loops through queryStringList to get the images and appends it here  -->
+					</div>
+				</div>
+			</div>
+
+			<!-- Lower container -->
+			<div class="row">
+				<div class="sidebar-container col-xs-2">
 						<ul class="nav nav-pills">
 							<li id="bonding-capability" class="active" data-category="bonding-capability"> Bonding Capability </a></li>
 							<li id="wire-looping" data-category="wire-looping"> Wire Looping </li>
@@ -61,65 +72,40 @@
 							<li id="options" data-category="options"> Options </li>
 							<li id="other-features" data-category="other-features"> Other Features </li>
 						</ul>
-					</div>
 				</div>
 
-				<!-- <div class="col-xs-2 blankspace">
-				</div> -->
-
-				<div class="col-xs-10 machineimage">
-					<div class="row" id="machine-image-container">
-						<div class="col-xs-3"></div>
-						<!-- this is where compare.js loops through queryStringList to get the images and appends it here  -->
-					</div>
-				</div>
-			</div>
-
-			<div id="machine-info-container">
-				<div class="row">
-
-					<div class="col-xs-2">
-						<!-- to accomodate for sidebar -->
-					</div>
-
-					<!-- <div class="col-xs-10 category-field-name-container" id="bonding-capability-field-name-container">
+				<div id="machine-info-container" class="col-xs-10">
+					<!-- <div class="category-field-name-container" id="bonding-capability-field-name-container">
 						<div class="row">
 							<div class="col-xs-3">Bond placement repeatability</div>
-
 							<div class="col-xs-4">some bpr1</div>
-
 							<div class="col-xs-4">some bpr2</div>
 						</div>
-
 						<div class="row">
 							<div class="col-xs-3">Bond area</div>
-
 							<div class="col-xs-4">some ba1</div>
-
 							<div class="col-xs-4">some ba2</div>
 						</div>
 					</div>
 
-					<div class="col-xs-10 category-field-name-container" id="wire-looping-field-name-container" style="display:none;">
+					<div class="category-field-name-container" id="wire-looping-field-name-container" style="display:none;">
 						<div class="row">
 							<div class="col-xs-3">Loop types</div>
-
 							<div class="col-xs-4">some lt1</div>
-
 							<div class="col-xs-4">some lt2</div>
 						</div>
-
 						<div class="row">
 							<div class="col-xs-3">UPH</div>
-
 							<div class="col-xs-4">some uph1</div>
-
 							<div class="col-xs-4">some uph2</div>
 						</div>
 					</div> -->
-
 				</div>
+
+
 			</div>
+
+
 
 
 
