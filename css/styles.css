@@ -45,9 +45,6 @@ a:hover .compare-text:hover {
 	text-decoration:none !important;
 }
 
-
-
-
 /*index*/
 
 #index-body {
@@ -192,7 +189,7 @@ a:hover .compare-text:hover {
 
 /*compare*/
 
-.sidebar ul li {
+.sidebar-container ul li {
 	background-color: #aa312c;
 	padding: 7px 10px;
 	width: 155px;
@@ -244,15 +241,46 @@ a:hover .compare-text:hover {
 	margin-bottom: 50px;
 }
 
+/* makes background color similar to the imag on top */
+.machine-info-item-highlight {
+	width: 250px;
+	background-color: #f7f7f7;
+}
+
+/* start of on hover row hightlight logic */
+
+.machine-info-highlight:hover {
+  background-color: yellow;
+}
+
+.machine-info-highlight:hover + div {
+  background-color: yellow;
+}
+
+.machine-info-highlight:hover + div .machine-info-item-highlight {
+  background-color: yellow;
+}
+
+.machine-info-highlight:hover + div + div {
+  background-color: yellow;
+}
+
+.machine-info-highlight:hover + div + div .machine-info-item-highlight {
+  background-color: yellow;
+}
+
+/* end of on hover row hightlight logic */
+
 .compare-machine-item > div {
 	width: 250px;
 	border: 1px #d9d9d9 solid;
 	margin-top: 20px;
 }
 
-/*.compare-machine-item {
-	height: 200px;
-}*/
+.compare-machine-item > img {
+	/* this is to make image not shrink when trying to shrink browser width */
+	min-width: 250px;
+}
 
 .compare-machine-name {
 	background-color: #999999;
