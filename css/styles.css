@@ -45,6 +45,9 @@ a:hover .compare-text:hover {
 	text-decoration:none !important;
 }
 
+
+
+
 /*index*/
 
 #index-body {
@@ -221,7 +224,7 @@ a:hover .compare-text:hover {
 }
 
 .compare-container {
-	width: 80%;
+	width: 75%;
 	margin: 0 auto;
 }
 
@@ -241,46 +244,64 @@ a:hover .compare-text:hover {
 	margin-bottom: 50px;
 }
 
-/* makes background color similar to the imag on top */
+/* makes background color similar to the image on top */
 .machine-info-item-highlight {
 	width: 250px;
-	background-color: #f7f7f7;
+	background-color: #f1f1f1;
 }
 
+
+.machine-info-highlight {
+	padding: 0px !important;
+}
 /* start of on hover row hightlight logic */
 
 /*highlight div im hovering, i.e the bond placement replacement field*/
 .machine-info-highlight:hover {
-  background-color: yellow;
-}
+  	background-color: #d3d3d3;
+  }
 
 /*highlight div beside it, but it goes behind the grey bgnd*/
 .machine-info-highlight:hover + div {
-  background-color: yellow;
+	background-color: #d3d3d3;
 }
 
 /*beside the div there's one more inner div, which is grey background*/
 .machine-info-highlight:hover + div .machine-info-item-highlight {
-  background-color: yellow;
+	background-color: #d3d3d3;
+	width: 250px;
 }
 
 /*highlight div next to the 2nd highlight*/
 .machine-info-highlight:hover + div + div {
-  background-color: yellow;
+	background-color: #d3d3d3;
 }
 
 /*same as third line, beside got one more inner div, but its doing for the 2nd grey div*/
-.machine-info-highlight:hover + div + div .machine-info-item-highlight {
-  background-color: yellow;
+.machine-info-highlight:hover + div  + div .machine-info-item-highlight {
+	background-color: #d3d3d3;
 }
 
 /* end of on hover row hightlight logic */
 
-.compare-machine-item > div {
+.compare-machine-item-bgnd {
+	background-color: #f1f1f1;
+	width: 250px ;
+	border: none !important;
+	padding-bottom: 20px; 
+}
+
+.machine-info-item-highlight-bgnd {
+	width: 250px;
+	background-color: #f1f1f1;
+	height: 60px;
+}
+
+/*.compare-machine-item > div {
 	width: 250px;
 	border: 1px #d9d9d9 solid;
 	margin-top: 20px;
-}
+}*/
 
 .compare-machine-item > img {
 	/* this is to make image not shrink when trying to shrink browser width */
