@@ -278,7 +278,7 @@ a:hover .compare-text:hover {
 }
 */
 
-/*same as third line, beside got one more inner div, but its doing for the 2nd grey div*/
+/*same  as third line, beside got one more inner div, but its doing for the 2nd grey div*/
 .machine-info-highlight:hover + div  + div .machine-info-item-highlight {
 	background-color: #d3d3d3;
 }
@@ -313,6 +313,14 @@ a:hover .compare-text:hover {
 	background-color: #999999;
 	padding: 20px 0;
 	font-weight: bold
+}
+
+.sidebar-container {
+	margin-bottom: 40px;
+}
+
+.machine-info-container {
+	margin-bottom: 40px;
 }
 
 .datainfo-container {
