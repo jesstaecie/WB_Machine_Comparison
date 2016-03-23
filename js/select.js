@@ -50,13 +50,14 @@ $(function () {
 						$(".select-machine-item-select")
 						.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]") //plus three strings tgt => .machineitem[data-id=5]
 						.not(".select-machine-item-select[data-machine-id="+secondMachineItemId+"]")
-						.attr("src", "img/faded.png");
+						.attr("src", "img/faded.png"); //returning elements that doesnt have the first and second machine id
 
 
 						$(".compare-product").show();
+
 					} else { // not full
 						$(".select-machine-item-select")
-						.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]") //will select either one with id
+						.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]") //will select either one with id and return the null to be white
 						.not(".select-machine-item-select[data-machine-id="+secondMachineItemId+"]")
 						.attr("src", "img/white.png");
 
@@ -85,6 +86,11 @@ function machineItemRowHtml(machineName, machineId, machineImage) {
 				+ '<img src="img/wb-img/wb-thumbnails-new/'+ machineImage + '" class="img-responsive" >'
 					+ '<div class="machine-greybox text-center" style="color:white">'
 						+ machineName	+ ' <img src="img/white.png" width="20" height="20" align="right" data-machine-id="' + machineId + '" class="select-machine-item-select">'
+							+ '<div class="compare-product align-center">' 
+								+ '<span class="compareproduct-text">'
+					 				+ '<span style="color:white"> Compare Product </span>'
+								+ '</span>'
+							+ '</div>'
 					+ '</div>'
 			+ '</div>'
 		+ '</div>'
