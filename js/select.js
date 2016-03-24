@@ -16,7 +16,7 @@ $(function () {
 				$(".compare-product").hide();
 
 				// When user selects 2 buttons,
-				// tore machine-id and show compare product button
+				// store machine-id and show compare product button
 
 				// 1. show that you have clicked, remove click when you unclick
 				// 2. click machine-id -> get id
@@ -47,19 +47,32 @@ $(function () {
 					}
 
 					if (firstMachineItemId != undefined && secondMachineItemId != undefined) { // full
+						
 						$(".select-machine-item-select")
-						.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]") //plus three strings tgt => .machineitem[data-id=5]
-						.not(".select-machine-item-select[data-machine-id="+secondMachineItemId+"]")
+						.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]") //plus three strings tgt => .machineitem[data-id=5]					
+						.not(".select-machine-item-select[data-machine-id="+secondMachineItemId+"]") //.select-machine-item-select[data-machine-id=1]
 						.attr("src", "img/faded.png"); //returning elements that doesnt have the first and second machine id
 
+						
+						 
+						 // $(".select-machine-item-select").find(".compare-product").show();
+						 // console.log (".compare-product");
+						
+						var chosenId = $(this).find(".select-machine-item-select[data-machine-id="+secondMachineItemId+"]");
+						console.log (chosenId) ;
 
-						$(".compare-product").show();
+					
+						
+							$(".compare-product").show();
+						
+						 
 
 					} else { // not full
 						$(".select-machine-item-select")
 						.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]") //will select either one with id and return the null to be white
 						.not(".select-machine-item-select[data-machine-id="+secondMachineItemId+"]")
 						.attr("src", "img/white.png");
+
 
 						$(".compare-product").hide();
 					}
@@ -86,7 +99,7 @@ function machineItemRowHtml(machineName, machineId, machineImage) {
 				+ '<img src="img/wb-img/wb-thumbnails-new/'+ machineImage + '" class="img-responsive" >'
 					+ '<div class="machine-greybox text-center" style="color:white">'
 						+ machineName	+ ' <img src="img/white.png" width="20" height="20" align="right" data-machine-id="' + machineId + '" class="select-machine-item-select">'
-							+ '<div class="compare-product align-center">' 
+							+ '<div class="compare-product">' 
 								+ '<span class="compareproduct-text">'
 					 				+ '<span style="color:white"> Compare Product </span>'
 								+ '</span>'
