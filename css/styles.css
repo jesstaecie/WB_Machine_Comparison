@@ -7,6 +7,16 @@ body {
 	min-width: 1024px;
 }
 
+/**/
+/* This is to fix broken height of compare-machine-item rows on newer browers */
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+/**/
+
 #header {
 	background-color: #aa312c;
 	height:50px;
@@ -204,8 +214,6 @@ a:hover .compare-text:hover {
 	cursor: pointer ;
 }
 
-
-
 .nav li:hover {
 	background-color: #999999 !important;
 	text-decoration:none !important;
@@ -245,35 +253,51 @@ a:hover .compare-text:hover {
 	margin-bottom: 50px;
 }
 
-/* makes background color similar to the imag on top */
+.machine-info-highlight {
+	padding: 20px 0;
+}
+
+/* makes background color similar to the imagw on top */
 .machine-info-item-highlight {
-	width: 250px;
 	background-color: #f7f7f7;
+	width: 250px;
+}
+
+.machine-field-padding .machine-info-highlight, .machine-field-padding .machine-info-item-highlight {
+	padding-top: 20px;
+	padding-bottom: 0px; /* need to set to 0 because .machine-info-hightlight sets this to 20*/
 }
 
 /* start of on hover row hightlight logic */
 
 .machine-info-highlight:hover {
-  background-color: #f1f1f1;
+  background-color: #d3d3d3;
 }
-
-/*.machine-info-highlight:hover + div {
-  background-color: #f1f1f1;
-}*/
 
 .machine-info-highlight:hover + div .machine-info-item-highlight {
-  background-color: #f1f1f1;
+  background-color: #d3d3d3;
 }
-
-/*.machine-info-highlight:hover + div + div {
-  background-color: #f1f1f1;
-}*/
 
 .machine-info-highlight:hover + div + div .machine-info-item-highlight {
-  background-color: #f1f1f1;
+  background-color: #d3d3d3;
 }
 
+.machine-field-padding .machine-info-highlight:hover {
+  background-color: inherit;
+}
+
+.machine-field-padding .machine-info-highlight:hover + div .machine-info-item-highlight {
+  background-color: #f7f7f7;
+}
+
+.machine-field-padding .machine-info-highlight:hover + div + div .machine-info-item-highlight {
+  background-color: #f7f7f7;
+}
+
+
 /* end of on hover row hightlight logic */
+
+
 
 .compare-machine-item > div {
 	width: 250px;
@@ -284,6 +308,7 @@ a:hover .compare-text:hover {
 .compare-machine-item > img {
 	/* this is to make image not shrink when trying to shrink browser width */
 	min-width: 250px;
+	background-color: #f7f7f7;
 }
 
 .compare-machine-name {
