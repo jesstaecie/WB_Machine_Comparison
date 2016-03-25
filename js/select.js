@@ -1,3 +1,11 @@
+jQuery.fn.visible = function() {
+    return this.css('visibility', 'visible');
+};
+
+jQuery.fn.invisible = function() {
+    return this.css('visibility', 'hidden');
+};
+
 $(function () {
 		$.get("machinelist.csv", function(csvString) {
 				// Append DOM from csv to #machine-items-container
@@ -9,11 +17,9 @@ $(function () {
 				for(var i=0; i<csvObject.data.length-2; i++) {
 					$('#machine-items-container').append(machineItemRowHtml(csvObject.data[i+1][1], csvObject.data[i+1][0], csvObject.data[i+1][2]));
 				}
-				console.log(csvObject);
-				
 
 				// On click setup
-				$(".compare-product").hide();
+				$(".compare-product").invisible();
 
 				// When user selects 2 buttons,
 				// tore machine-id and show compare product button
@@ -24,8 +30,12 @@ $(function () {
 				// 4. after click 2, show compare-product
 
 				var firstMachineItemId, secondMachineItemId;
-					$(".select-machine-item-select").click(function() {
-					var machineId = $(this).data("machine-id");
+					$(".select-machine-item-image, .select-machine-item .machine-greybox").click(function() {
+					console.log('weee');
+					$selectMachineItemSelect = $(this).parents('.select-machine-item').find('.select-machine-item-select');
+					// select ".select-machine-item-select"
+
+					var machineId = $selectMachineItemSelect.data("machine-id");
 
 					if (machineId == firstMachineItemId || machineId == secondMachineItemId) { // remove
 							if (machineId == firstMachineItemId) {
@@ -33,15 +43,16 @@ $(function () {
 							} else {
 								secondMachineItemId = undefined;
 							}
-							$(this).attr("src", "img/white.png");
+							$selectMachineItemSelect.attr("src", "img/white.png");
 
 					} else { // add
 						if (firstMachineItemId == undefined && machineId != secondMachineItemId) { // first container is empty
 							firstMachineItemId = machineId;
-							$(this).attr("src", "img/red.png");
+							console.log($selectMachineItemSelect);
+							$selectMachineItemSelect.attr("src", "img/green.png");
 						} else if (secondMachineItemId == undefined && machineId != firstMachineItemId) {
 							secondMachineItemId = machineId;
-							$(this).attr("src", "img/red.png");
+							$selectMachineItemSelect.attr("src", "img/green.png");
 						}
 
 					}
@@ -52,15 +63,14 @@ $(function () {
 						.not(".select-machine-item-select[data-machine-id="+secondMachineItemId+"]")
 						.attr("src", "img/faded.png");
 
-
-						$(".compare-product").show();
+						$selectMachineItemSelect.parents(".select-machine-item").find(".compare-product").visible();
 					} else { // not full
 						$(".select-machine-item-select")
 						.not(".select-machine-item-select[data-machine-id="+firstMachineItemId+"]") //will select either one with id
 						.not(".select-machine-item-select[data-machine-id="+secondMachineItemId+"]")
 						.attr("src", "img/white.png");
 
-						$(".compare-product").hide();
+						$(".compare-product").invisible();
 					}
 
 				});
@@ -82,10 +92,15 @@ function machineItemRowHtml(machineName, machineId, machineImage) {
 	return (
 		'<div class="col-sm-4 select-machine-item">'
 			+ '<div class="center-block">'
-				+ '<img src="img/wb-img/wb-thumbnails/'+ machineImage + '" class="img-responsive" >'
-					+ '<div class="machine-greybox text-center" style="color:white">'
-						+ machineName	+ ' <img src="img/white.png" width="20" height="20" align="right" data-machine-id="' + machineId + '" class="select-machine-item-select">'
-					+ '</div>'
+				+ '<img src="img/wb-img/wb-thumbnails/'+ machineImage + '" class="img-responsive select-machine-item-image" >'
+				+ '<div class="machine-greybox text-center" style="color:white">'
+					+ machineName	+ ' <img src="img/white.png" width="20" height="20" align="right" data-machine-id="' + machineId + '" class="select-machine-item-select">'
+				+ '</div>'
+			+ '</div>'
+			+ '<div class="center-block">'
+				+ '<div class="compare-product text-center">'
+					+ '<span> Compare Product </span>'
+				+ '</div>'
 			+ '</div>'
 		+ '</div>'
 	);
