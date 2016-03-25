@@ -509,7 +509,7 @@ function otherFeaturesToRender(machineFields, machineInfoData, queryStringListLe
 function machineFieldRow(machineField, machineInfoList) {
   var stringToRender = "";
   stringToRender += '<div class="row row-eq-height">';
-  stringToRender += '<div class="col-xs-3 machine-info-highlight">' + machineField + '</div>';
+  stringToRender += '<div class="col-xs-3 machine-info-highlight"><strong>' + machineField + '</strong></div>';
   for (var i=0; i<machineInfoList.length; i++) {
     stringToRender += '<div class="col-xs-4"><div class="machine-info-item-highlight text-center">' + machineInfoList[i] + '</div></div>'
   }
