@@ -7,6 +7,16 @@ body {
 	min-width: 1024px;
 }
 
+/**/
+/* This is to fix broken height of compare-machine-item rows on newer browers */
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+/**/
+
 #header {
 	background-color: #aa312c;
 	height:50px;
@@ -44,9 +54,6 @@ a:hover .compare-text:hover {
 	color: #eaeaea !important;
 	text-decoration:none !important;
 }
-
-
-
 
 /*index*/
 
@@ -123,22 +130,15 @@ a:hover .compare-text:hover {
 
 
 .compare-product {
-	display: block;
-	float: right;
-	margin:10px 0px 0px 10px;
-	height: auto;
-	cursor: pointer;
-}
-
-.compareproduct-text {
 	color: white;
 	font-size: 15px;
 	background-color: #aa312c;
 	padding: 8px 15px;
+	cursor: pointer;
 }
 
-.select-container {
-	/*margin-bottom: 1080px;*/
+.compareproduct-text {
+
 }
 
 .selection-text {
@@ -165,10 +165,14 @@ a:hover .compare-text:hover {
 
 .select-machine-item > div {
 	width: 250px;
-	border: 1px #d9d9d9 solid;
-	margin-top: 20px;
 	cursor: pointer;
 }
+
+.select-machine-item > div:first-child {
+	border: 1px #d9d9d9 solid;
+	margin-top: 20px;
+}
+
 
 .select-machine-item-select {
 	cursor: pointer;
@@ -203,8 +207,6 @@ a:hover .compare-text:hover {
 	cursor: pointer ;
 }
 
-
-
 .nav li:hover {
 	background-color: #999999 !important;
 	text-decoration:none !important;
@@ -224,7 +226,7 @@ a:hover .compare-text:hover {
 }
 
 .compare-container {
-	width: 70%;
+	width: 80%;
 	margin: 0 auto;
 }
 
@@ -244,69 +246,63 @@ a:hover .compare-text:hover {
 	margin-bottom: 50px;
 }
 
-/* makes background color similar to the image on top */
-.machine-info-item-highlight {
-	width: 250px;
-	background-color: #f1f1f1;
-}
-
-
 .machine-info-highlight {
-	padding: 0px !important;
+	padding: 20px 0;
 }
+
+/* makes background color similar to the imagw on top */
+.machine-info-item-highlight {
+	background-color: #f7f7f7;
+	width: 250px;
+}
+
+.machine-field-padding .machine-info-highlight, .machine-field-padding .machine-info-item-highlight {
+	padding-top: 20px;
+	padding-bottom: 0px; /* need to set to 0 because .machine-info-hightlight sets this to 20*/
+}
+
 /* start of on hover row hightlight logic */
 
-/*highlight div im hovering, i.e the bond placement replacement field*/
 .machine-info-highlight:hover {
-  	background-color: #d3d3d3;
-  }
+  background-color: #d3d3d3;
+}
 
-/*highlight div beside it, but it goes behind the grey bgnd*/
-/*.machine-info-highlight:hover + div {
-	background-color: #d3d3d3;
-}*/
-
-/*beside the div there's one more inner div, which is grey background*/
 .machine-info-highlight:hover + div .machine-info-item-highlight {
-	background-color: #d3d3d3;
-
+  background-color: #d3d3d3;
 }
 
-/*highlight div next to the 2nd highlight*/
-/*.machine-info-highlight:hover + div + div {
-	background-color: #d3d3d3;
+.machine-info-highlight:hover + div + div .machine-info-item-highlight {
+  background-color: #d3d3d3;
 }
-*/
 
-/*same  as third line, beside got one more inner div, but its doing for the 2nd grey div*/
-.machine-info-highlight:hover + div  + div .machine-info-item-highlight {
-	background-color: #d3d3d3;
+/* This is to make sure that padding does not have a hover background color change  */
+.machine-field-padding .machine-info-highlight:hover {
+  background-color: inherit;
 }
+
+.machine-field-padding .machine-info-highlight:hover + div .machine-info-item-highlight {
+  background-color: #f7f7f7;
+}
+
+.machine-field-padding .machine-info-highlight:hover + div + div .machine-info-item-highlight {
+  background-color: #f7f7f7;
+}
+
 
 /* end of on hover row hightlight logic */
 
-.compare-machine-item-bgnd {
-	background-color: #f1f1f1;
-	width: 250px ;
-	border: none !important;
-	padding-bottom: 40px; 
-}
 
-.machine-info-item-highlight-bgnd {
-	width: 250px;
-	background-color: #f1f1f1;
-	height: 60px;
-}
 
-/*.compare-machine-item > div {
+.compare-machine-item > div {
 	width: 250px;
 	border: 1px #d9d9d9 solid;
 	margin-top: 20px;
-}*/
+}
 
 .compare-machine-item > img {
 	/* this is to make image not shrink when trying to shrink browser width */
 	min-width: 250px;
+	background-color: #f7f7f7;
 }
 
 .compare-machine-name {
@@ -315,26 +311,9 @@ a:hover .compare-text:hover {
 	font-weight: bold
 }
 
-.sidebar-container {
-	margin-bottom: 40px;
-}
-
-.machine-info-container {
-	margin-bottom: 40px;
-}
-
 .datainfo-container {
 	width: !important;
 }
-
-/*.category-field-name-container {
-	margin-left: 200px !important;
-}
-
-.compare-machine-item-outer-container {
-	height: 50px;
-}*/
-
 
 /* try out for compare.html grid*/
 #trygrid-body {
@@ -351,10 +330,6 @@ a:hover .compare-text:hover {
 margin-bottom: 300px;
 }
 
-/*.bottom-container {
-	height: auto;
-}*/
-
 .machine-thumbnail-container {
 	/*height: 600px;*/
 	background-color: red;
@@ -363,11 +338,6 @@ margin-bottom: 300px;
 .trysidebar-container {
 	height: 500px;
 }
-
-
-/*.compare-mc-item-container {
-	margin-left: 300px;
-}*/
 
 .machineone-container {
 	border: 1px black solid;

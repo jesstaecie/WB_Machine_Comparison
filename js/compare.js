@@ -61,6 +61,11 @@ var MACHINE_EASY_CU_LOOPING_INDEX = 59;
 var MACHINE_SMART_WIRE_HANDLER_INDEX = 60;
 var MACHINE_AUTO_WIRE_RETHREAD_INDEX = 61;
 
+
+Array.max = function( array ){
+    return Math.max.apply( Math, array );
+};
+
 //------ This function is to retrieve ID from url after selection of machines to compare--------\\
 //1. get url
 //2. split delimeter is '?''
@@ -82,20 +87,41 @@ $(function () {
         $('#machine-image-container').append(machineImageToRender(queryStringList, csvObject.data));
 
         // Add machine image and name header to compare into machine-image-container
-        // !!!!
         $('#machine-info-container').append(machineInfoToRender(queryStringList, csvObject.data));
+
+        // Set css dynamically for first category
+        $firstCategoryFieldContainer = $('.category-field-name-container').first();
+        $firstCategoryFieldContainer.find('.row.row-eq-height').each(function(){
+          $columns = $(this).find("[class^=col-]");
+          $columnHeights = $columns.map(function(index, col) {
+            return $(col).height();
+          });
+          tallestHeight = Array.max($columnHeights);
+          $(this).find('.machine-info-item-highlight').css("line-height" ,tallestHeight+"px");
+        });
+
       });
 
+      // Set on click events for sidebar show and hide categories
       $('.sidebar-container li').click(function() {
         // removing and adding class active on clicked nav bar so that different style can be applied on active nav bar
         $('.sidebar-container li').removeClass('active');
         $(this).addClass('active');
         var category = $(this).data('category');
         $('.category-field-name-container').hide(); // this will remove all machine-info categories
-        $('#'+category+'-field-name-container').show(); // and show only the category which was clicked
+        $categoryContainerById = $('#'+category+'-field-name-container');
+        $categoryContainerById.show(); // and show only the category which was clicked
+
+        // Set css dynamically for rest of the category
+        $categoryContainerById.find('.row.row-eq-height').each(function(){
+          $columns = $(this).find("[class^=col-]");
+          $columnHeights = $columns.map(function(index, col) {
+            return $(col).height();
+          });
+          $tallestHeight = Array.max($columnHeights);
+          $(this).find('.machine-info-item-highlight').height($tallestHeight);
+        });
       });
-
-
     }
  });
 
@@ -122,10 +148,10 @@ function machineImageToRender(queryStringList, csvObjectData) {
     var machineImage =  csvObjectData[machineId][MACHINE_IMAGE_INDEX];
 
     stringToRender = stringToRender // append the dom to be rendered to existing stringToRender
-    + '<div class="col-xs-4 compare-machine-item"><div class="compare-machine-item-bgnd">'
+    + '<div class="col-xs-4 compare-machine-item">'
       + '<div class="compare-machine-name first-machine text-center">' + machineName + '</div>'
-      + '<img src="img/wb-img/wb-thumbnails-new/' + machineImage + '" class="img-responsive">'
-    + '</div></div>'
+      + '<img src="img/wb-img/wb-thumbnails/' + machineImage + '" class="img-responsive">'
+    + '</div>'
   }
 
   return stringToRender;
@@ -146,16 +172,16 @@ function machineInfoToRender(queryStringList, csvObjectData) {
     machineInfoData.push(csvObjectData[machineId]) //push new machine info data to existing data of array at the end
   }
 
-  stringToRender += bondingCapabilityToRender(machineFields, machineInfoData);
-  stringToRender += wireLoopingToRender(machineFields, machineInfoData);
-  stringToRender += visionOpticsToRender(machineFields, machineInfoData);
-  stringToRender += workholderToRender(machineFields, machineInfoData);
-  stringToRender += loaderUnloaderToRender(machineFields, machineInfoData);
-  stringToRender += wireFeedToRender(machineFields, machineInfoData);
-  stringToRender += bondHeadToRender(machineFields, machineInfoData);
-  stringToRender += miscToRender(machineFields, machineInfoData);
-  stringToRender += optionsToRender(machineFields, machineInfoData);
-  stringToRender += otherFeaturesToRender(machineFields, machineInfoData);
+  stringToRender += bondingCapabilityToRender(machineFields, machineInfoData, queryStringList.length);
+  stringToRender += wireLoopingToRender(machineFields, machineInfoData, queryStringList.length);
+  stringToRender += visionOpticsToRender(machineFields, machineInfoData, queryStringList.length);
+  stringToRender += workholderToRender(machineFields, machineInfoData, queryStringList.length);
+  stringToRender += loaderUnloaderToRender(machineFields, machineInfoData, queryStringList.length);
+  stringToRender += wireFeedToRender(machineFields, machineInfoData, queryStringList.length);
+  stringToRender += bondHeadToRender(machineFields, machineInfoData, queryStringList.length);
+  stringToRender += miscToRender(machineFields, machineInfoData, queryStringList.length);
+  stringToRender += optionsToRender(machineFields, machineInfoData, queryStringList.length);
+  stringToRender += otherFeaturesToRender(machineFields, machineInfoData, queryStringList.length);
   return stringToRender;
 }
 
@@ -174,7 +200,7 @@ function machineInfoToRender(queryStringList, csvObjectData) {
 //     <div class="col-xs-4">some ba2</div>
 //   </div>
 // </div>
-function bondingCapabilityToRender(machineFields, machineInfoData) {
+function bondingCapabilityToRender(machineFields, machineInfoData, queryStringListLength) {
   var stringToRender = "";
   var bondReplacementRepeatability = [];
   var bondingArea = [];
@@ -194,6 +220,9 @@ function bondingCapabilityToRender(machineFields, machineInfoData) {
     finePitchCapability.push(machineInfoData[i][MACHINE_FINE_PITCH_CAPABILITY_INDEX]);
   }
   stringToRender += '<div class="category-field-name-container" id="bonding-capability-field-name-container">';
+
+
+  stringToRender += machineFieldPadding(queryStringListLength);
   stringToRender += machineFieldRow(machineFields[MACHINE_BOND_PLACEMENT_REPEATABILITY_INDEX], bondReplacementRepeatability);
   stringToRender += machineFieldRow(machineFields[MACHINE_BONDING_AREA_INDEX], bondingArea);
   stringToRender += machineFieldRow(machineFields[MACHINE_LOOP_TYPES_INDEX], loopTypes);
@@ -206,7 +235,7 @@ function bondingCapabilityToRender(machineFields, machineInfoData) {
   return stringToRender;
 }
 
-function wireLoopingToRender(machineFields, machineInfoData) {
+function wireLoopingToRender(machineFields, machineInfoData, queryStringListLength) {
   var stringToRender = "";
   var loopHeightVariation = [];
   var wireLength = [];
@@ -218,6 +247,7 @@ function wireLoopingToRender(machineFields, machineInfoData) {
     wireCapacity.push(machineInfoData[i][MACHINE_WIRE_CAPACITY_INDEX]);
   }
   stringToRender += '<div class="category-field-name-container" id="wire-looping-field-name-container" style="display:none;">';
+  stringToRender += machineFieldPadding(queryStringListLength);
   stringToRender += machineFieldRow(machineFields[MACHINE_LOOP_HEIGHT_VARIATION_INDEX], loopHeightVariation);
   stringToRender += machineFieldRow(machineFields[MACHINE_WIRE_LENGTH_INDEX], wireLength);
   stringToRender += machineFieldRow(machineFields[MACHINE_WIRE_CAPACITY_INDEX], wireCapacity);
@@ -226,7 +256,7 @@ function wireLoopingToRender(machineFields, machineInfoData) {
   return stringToRender;
 }
 
-function visionOpticsToRender(machineFields, machineInfoData) {
+function visionOpticsToRender(machineFields, machineInfoData, queryStringListLength) {
   var stringToRender = "";
   var opticsLensMagnification = [];
   var sScanVisionEngine = [];
@@ -246,6 +276,7 @@ function visionOpticsToRender(machineFields, machineInfoData) {
     dieRotation.push(machineInfoData[i][MACHINE_DIE_ROTATION_INDEX]);
   }
   stringToRender += '<div class="category-field-name-container" id="vision-optics-field-name-container" style="display:none;">';
+  stringToRender += machineFieldPadding(queryStringListLength);
   stringToRender += machineFieldRow(machineFields[MACHINE_OPTICS_LENS_MAGNIFICATON_INDEX], opticsLensMagnification);
   stringToRender += machineFieldRow(machineFields[MACHINE_S_SCAN_VISION_ENGINE_INDEX], sScanVisionEngine);
   stringToRender += machineFieldRow(machineFields[MACHINE_RECOGNITION_RANGE_INDEX], recognitionRange);
@@ -258,7 +289,7 @@ function visionOpticsToRender(machineFields, machineInfoData) {
   return stringToRender;
 }
 
-function workholderToRender(machineFields, machineInfoData) {
+function workholderToRender(machineFields, machineInfoData, queryStringListLength) {
   var stringToRender = "";
   var xyMotorsType = [];
   var lfWidth = [];
@@ -274,6 +305,7 @@ function workholderToRender(machineFields, machineInfoData) {
     dieSiteIndexingPitch.push(machineInfoData[i][MACHINE_DIE_SITE_INDEXING_PITCH_INDEX]);
   }
   stringToRender += '<div class="category-field-name-container" id="workholder-field-name-container" style="display:none;">';
+  stringToRender += machineFieldPadding(queryStringListLength);
   stringToRender += machineFieldRow(machineFields[MACHINE_XY_MOTORS_TYPE_INDEX], xyMotorsType);
   stringToRender += machineFieldRow(machineFields[MACHINE_L_F_WIDTH_INDEX], lfWidth);
   stringToRender += machineFieldRow(machineFields[MACHINE_L_F_LENGTH_INDEX], lfLength);
@@ -284,7 +316,7 @@ function workholderToRender(machineFields, machineInfoData) {
   return stringToRender;
 }
 
-function loaderUnloaderToRender(machineFields, machineInfoData) {
+function loaderUnloaderToRender(machineFields, machineInfoData, queryStringListLength) {
   var stringToRender = "";
   var noOfMagazine = [];
   var noOfLevels = [];
@@ -302,6 +334,7 @@ function loaderUnloaderToRender(machineFields, machineInfoData) {
     slotPitch.push(machineInfoData[i][MACHINE_SLOT_PITCH_INDEX]);
   }
   stringToRender += '<div class="category-field-name-container" id="loader-unloader-field-name-container" style="display:none;">';
+  stringToRender += machineFieldPadding(queryStringListLength);
   stringToRender += machineFieldRow(machineFields[MACHINE_NO_OF_MAGAZINE_INDEX], noOfMagazine);
   stringToRender += machineFieldRow(machineFields[MACHINE_NO_OF_LEVELS_INDEX], noOfLevels);
   stringToRender += machineFieldRow(machineFields[MACHINE_MAGAZINE_WIDTH_INDEX], magazineWidth);
@@ -313,7 +346,7 @@ function loaderUnloaderToRender(machineFields, machineInfoData) {
   return stringToRender;
 }
 
-function wireFeedToRender(machineFields, machineInfoData) {
+function wireFeedToRender(machineFields, machineInfoData, queryStringListLength) {
   var stringToRender = "";
   var spoolDiameter = [];
   var spoolWidth = [];
@@ -327,6 +360,7 @@ function wireFeedToRender(machineFields, machineInfoData) {
     wireEnd.push(machineInfoData[i][MACHINE_WIRE_END_INDEX]);
   }
   stringToRender += '<div class="category-field-name-container" id="wire-feed-field-name-container" style="display:none;">';
+  stringToRender += machineFieldPadding(queryStringListLength);
   stringToRender += machineFieldRow(machineFields[MACHINE_SPOOL_DIAMETER_INDEX], spoolDiameter);
   stringToRender += machineFieldRow(machineFields[MACHINE_SPOOL_WIDTH_INDEX], spoolWidth);
   stringToRender += machineFieldRow(machineFields[MACHINE_WIRE_COUNT_INDEX], wireCount);
@@ -336,7 +370,7 @@ function wireFeedToRender(machineFields, machineInfoData) {
   return stringToRender;
 }
 
-function bondHeadToRender(machineFields, machineInfoData) {
+function bondHeadToRender(machineFields, machineInfoData, queryStringListLength) {
   var stringToRender = "";
   var driveMotorType = [];
   var wireClamp = [];
@@ -352,6 +386,7 @@ function bondHeadToRender(machineFields, machineInfoData) {
     transducerFrequency.push(machineInfoData[i][MACHINE_TRANSDUCER_FREQUENCY_INDEX]);
   }
   stringToRender += '<div class="category-field-name-container" id="bondhead-field-name-container" style="display:none;">';
+  stringToRender += machineFieldPadding(queryStringListLength);
   stringToRender += machineFieldRow(machineFields[MACHINE_DRIVE_MOTOR_TYPE_INDEX], driveMotorType);
   stringToRender += machineFieldRow(machineFields[MACHINE_WIRE_CLAMP_INDEX], wireClamp);
   stringToRender += machineFieldRow(machineFields[MACHINE_BOND_TIME_RANGE_INDEX], bondTimeRange);
@@ -362,7 +397,7 @@ function bondHeadToRender(machineFields, machineInfoData) {
   return stringToRender;
 }
 
-function miscToRender(machineFields, machineInfoData) {
+function miscToRender(machineFields, machineInfoData, queryStringListLength) {
   var stringToRender = "";
   var manMachineInterface = [];
   var storageMedia = [];
@@ -390,6 +425,7 @@ function miscToRender(machineFields, machineInfoData) {
     machineShippingWeight.push(machineInfoData[i][MACHINE_MACHINE_SHIPPING_WEIGHT_INDEX]);
   }
   stringToRender += '<div class="category-field-name-container" id="misc-field-name-container" style="display:none;">';
+  stringToRender += machineFieldPadding(queryStringListLength);
   stringToRender += machineFieldRow(machineFields[MACHINE_MAN_MACHINE_INTERFACE_INDEX], manMachineInterface);
   stringToRender += machineFieldRow(machineFields[MACHINE_STORE_MEDIA_INDEX], storageMedia);
   stringToRender += machineFieldRow(machineFields[MACHINE_POWER_INPUT_INDEX], powerInput);
@@ -406,7 +442,7 @@ function miscToRender(machineFields, machineInfoData) {
   return stringToRender;
 }
 
-function optionsToRender(machineFields, machineInfoData) {
+function optionsToRender(machineFields, machineInfoData, queryStringListLength) {
   var stringToRender = "";
   var indexers = [];
   var materialHandlingKits = [];
@@ -424,6 +460,7 @@ function optionsToRender(machineFields, machineInfoData) {
     cuApplication.push(machineInfoData[i][MACHINE_CU_APPLICATION_INDEX]);
   }
   stringToRender += '<div class="category-field-name-container" id="options-field-name-container" style="display:none;">';
+  stringToRender += machineFieldPadding(queryStringListLength);
   stringToRender += machineFieldRow(machineFields[MACHINE_INDEXERS_INDEX], indexers);
   stringToRender += machineFieldRow(machineFields[MACHINE_MATERIAL_HANDLING_KITS_INDEX], materialHandlingKits);
   stringToRender += machineFieldRow(machineFields[MACHINE_HEAVY_WIRE_KIT_INDEX], heavyWireKit);
@@ -435,7 +472,7 @@ function optionsToRender(machineFields, machineInfoData) {
   return stringToRender;
 }
 
-function otherFeaturesToRender(machineFields, machineInfoData) {
+function otherFeaturesToRender(machineFields, machineInfoData, queryStringListLength) {
   var stringToRender = "";
   var easyCuConversion = [];
   var smartPR = [];
@@ -451,6 +488,7 @@ function otherFeaturesToRender(machineFields, machineInfoData) {
     autoWireRethread.push(machineInfoData[i][MACHINE_AUTO_WIRE_RETHREAD_INDEX]);
   }
   stringToRender += '<div class="category-field-name-container" id="other-features-field-name-container" style="display:none;">';
+  stringToRender += machineFieldPadding(queryStringListLength);
   stringToRender += machineFieldRow(machineFields[MACHINE_EASY_CU_CONVERSION_INDEX], easyCuConversion);
   stringToRender += machineFieldRow(machineFields[MACHINE_SMART_PR_INDEX], smartPR);
   stringToRender += machineFieldRow(machineFields[MACHINE_EASY_CU_LOOPING_INDEX], easyCuLooping);
@@ -470,10 +508,23 @@ function otherFeaturesToRender(machineFields, machineInfoData) {
 // </div>
 function machineFieldRow(machineField, machineInfoList) {
   var stringToRender = "";
-  stringToRender += '<div class="row">';
-  stringToRender += '<div class="col-xs-3 machine-info-highlight"><b>' + machineField + '</b></div>';
+  stringToRender += '<div class="row row-eq-height">';
+  stringToRender += '<div class="col-xs-3 machine-info-highlight"><strong>' + machineField + '</strong></div>';
   for (var i=0; i<machineInfoList.length; i++) {
-    stringToRender += '<div class="col-xs-4 text-center" ><div class="machine-info-item-highlight-bgnd"><div class="machine-info-item-highlight">' + machineInfoList[i] + '</div></div></div>'
+    stringToRender += '<div class="col-xs-4"><div class="machine-info-item-highlight text-center">' + machineInfoList[i] + '</div></div>'
+  }
+  stringToRender += '</div>';
+
+  return stringToRender;
+}
+
+// This is just a empty div for padding
+function machineFieldPadding(queryStringListLength) {
+  var stringToRender = "";
+  stringToRender += '<div class="row machine-field-padding">';
+  stringToRender += '<div class="col-xs-3 machine-info-highlight"></div>';
+  for (var i=0; i<queryStringListLength; i++) {
+    stringToRender += '<div class="col-xs-4"><div class="machine-info-item-highlight"></div></div>'
   }
   stringToRender += '</div>';
 
