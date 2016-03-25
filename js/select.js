@@ -46,7 +46,6 @@ $(function () {
 					} else { // add
 						if (firstMachineItemId == undefined && machineId != secondMachineItemId) { // first container is empty
 							firstMachineItemId = machineId;
-							console.log($selectMachineItemSelect);
 							$selectMachineItemSelect.attr("src", "img/green.png");
 						} else if (secondMachineItemId == undefined && machineId != firstMachineItemId) {
 							secondMachineItemId = machineId;

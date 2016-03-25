@@ -130,9 +130,6 @@ a:hover .compare-text:hover {
 
 
 .compare-product {
-	/*float: right;*/
-	/*margin:10px 0px 0px 10px;*/
-	/*height: auto;*/
 	color: white;
 	font-size: 15px;
 	background-color: #aa312c;
@@ -142,10 +139,6 @@ a:hover .compare-text:hover {
 
 .compareproduct-text {
 
-}
-
-.select-container {
-	/*margin-bottom: 1080px;*/
 }
 
 .selection-text {
@@ -282,6 +275,7 @@ a:hover .compare-text:hover {
   background-color: #d3d3d3;
 }
 
+/* This is to make sure that padding does not have a hover background color change  */
 .machine-field-padding .machine-info-highlight:hover {
   background-color: inherit;
 }
@@ -321,15 +315,6 @@ a:hover .compare-text:hover {
 	width: !important;
 }
 
-/*.category-field-name-container {
-	margin-left: 200px !important;
-}
-
-.compare-machine-item-outer-container {
-	height: 50px;
-}*/
-
-
 /* try out for compare.html grid*/
 #trygrid-body {
 	background-image: url("../img/pageBg.jpg");
@@ -345,10 +330,6 @@ a:hover .compare-text:hover {
 margin-bottom: 300px;
 }
 
-/*.bottom-container {
-	height: auto;
-}*/
-
 .machine-thumbnail-container {
 	/*height: 600px;*/
 	background-color: red;
@@ -357,11 +338,6 @@ margin-bottom: 300px;
 .trysidebar-container {
 	height: 500px;
 }
-
-
-/*.compare-mc-item-container {
-	margin-left: 300px;
-}*/
 
 .machineone-container {
 	border: 1px black solid;
