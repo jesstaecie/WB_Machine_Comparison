@@ -31,7 +31,7 @@ $(function () {
 
 				var firstMachineItemId, secondMachineItemId;
 					$(".select-machine-item-image, .select-machine-item .machine-greybox").click(function() {
-					$selectMachineItemSelect = $(this).parents('.select-machine-item').find('.select-machine-item-select');
+					var $selectMachineItemSelect = $(this).parents('.select-machine-item').find('.select-machine-item-select');
 
 					var machineId = $selectMachineItemSelect.data("machine-id");
 

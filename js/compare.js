@@ -97,7 +97,7 @@ $(function () {
             return $(col).height();
           });
           tallestHeight = Array.max($columnHeights);
-          $(this).find('.machine-info-item-highlight').css("line-height" ,tallestHeight+"px");
+          $(this).find('.machine-info-item-highlight').css("line-height", tallestHeight+"px");
         });
 
       });
@@ -119,7 +119,7 @@ $(function () {
             return $(col).height();
           });
           $tallestHeight = Array.max($columnHeights);
-          $(this).find('.machine-info-item-highlight').height($tallestHeight);
+          $(this).find('.machine-info-item-highlight').css("line-height", tallestHeight+"px");
         });
       });
     }
